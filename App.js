@@ -9,19 +9,18 @@ import {
   ScrollView,
   Image,
 } from "react-native";
-import burgerIcon from "./assets/burger menu.png";
-import logoIcon from "./assets/little lemon logo.png";
-import cartIcon from "./assets/cart logo.png";
-import random from "./assets/favicon.png";
+import burgerIcon from "./assets/burger-menu.png";
+import logoIcon from "./assets/little-lemon-logo.png";
+import cartIcon from "./assets/cart-logo.png";
+// import cartIcon from "./assets/cart-logo.png";
 
 export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.navigation}>
-        <Image source={burgerIcon} style={{ width: 100, height: 100 }} />
-        <Image source={logoIcon} style={{ width: 100, height: 100 }} />
-        <Image source={cartIcon} style={{ width: 100, height: 100 }} />
-        <Image source={random} style={{ width: 100, height: 100 }} />
+        <Image source={burgerIcon} />
+        <Image source={logoIcon} />
+        <Image source={cartIcon} />
       </View>
       <View style={styles.hero}>
         <Text style={styles.heroHeading}>Little Lemon</Text>
@@ -31,7 +30,9 @@ export default function App() {
             We are a family owned Mediterranean restaurant, focused on
             traditional recipes served with a modern twist.
           </Text>
-          <Image source={random} style={{ width: 150, height: 150 }} />
+        </View>
+        <View style={styles.heroButtonContainer}>
+          <Button title="Reserve a table" color="#F4CE14" />
         </View>
       </View>
 
@@ -49,10 +50,11 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   navigation: {
-    backgroundColor: "pink",
+    // backgroundColor: "pink",
     height: 80,
     width: "100%",
     flexDirection: "row",
+    justifyContent: "space-around",
   },
   hero: {
     backgroundColor: "#495E57",
@@ -78,6 +80,11 @@ const styles = StyleSheet.create({
   heroMessage: {
     color: "white",
     fontSize: 20,
-    width: "70%",
+    flex: 5,
+    marginRight: 10,
+  },
+  heroButtonContainer: {
+    width: 150,
+    borderRadius: 14,
   },
 });
