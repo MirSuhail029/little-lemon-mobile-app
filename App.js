@@ -7,47 +7,34 @@ import {
   Button,
   View,
   ScrollView,
+  Image,
 } from "react-native";
+import burgerIcon from "./assets/burger menu.png";
+import logoIcon from "./assets/little lemon logo.png";
+import cartIcon from "./assets/cart logo.png";
+import random from "./assets/favicon.png";
 
 export default function App() {
-  const [inputValue, setInputValue] = useState("");
-  const [todoArray, setTodoArray] = useState([]);
-
   return (
     <View style={styles.container}>
-      <View style={styles.todoHeader}>
-        <View style={styles.inputControl}>
-          <TextInput
-            style={styles.textInput}
-            onChangeText={(val) => {
-              setInputValue(val);
-            }}
-            value={inputValue}
-          ></TextInput>
-          <View style={{ justifyContent: "center" }}>
-            <Button
-              title="Add ToDo"
-              onPress={() => {
-                {
-                  inputValue && setTodoArray([...todoArray, inputValue]);
-                }
-                setInputValue("");
-              }}
-            />
-          </View>
+      <View style={styles.navigation}>
+        <Image source={burgerIcon} style={{ width: 100, height: 100 }} />
+        <Image source={logoIcon} style={{ width: 100, height: 100 }} />
+        <Image source={cartIcon} style={{ width: 100, height: 100 }} />
+        <Image source={random} style={{ width: 100, height: 100 }} />
+      </View>
+      <View style={styles.hero}>
+        <Text style={styles.heroHeading}>Little Lemon</Text>
+        <Text style={styles.heroSubHeading}>Chicago</Text>
+        <View style={styles.heroMessageImageContainer}>
+          <Text style={styles.heroMessage}>
+            We are a family owned Mediterranean restaurant, focused on
+            traditional recipes served with a modern twist.
+          </Text>
+          <Image source={random} style={{ width: 150, height: 150 }} />
         </View>
       </View>
-      <View style={styles.todoBody}>
-        <ScrollView>
-          {todoArray.map((item, index) => {
-            return (
-              <View style={styles.todoListItemContainer} key={index}>
-                <Text style={styles.todoListItem}>{item}</Text>
-              </View>
-            );
-          })}
-        </ScrollView>
-      </View>
+
       <StatusBar style="auto" />
     </View>
   );
@@ -58,47 +45,39 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center",
     marginTop: 30,
     marginBottom: 30,
   },
-  todoHeader: {
-    // backgroundColor: "gray",
-    flex: 2,
-    width: "90%",
-    justifyContent: "center",
-    borderBottomWidth: 2,
-    borderBottomColor: "gray",
-  },
-  inputControl: {
+  navigation: {
+    backgroundColor: "pink",
+    height: 80,
+    width: "100%",
     flexDirection: "row",
   },
-  textInput: {
-    // backgroundColor: "green",
-    fontSize: 20,
-    height: 50,
-    width: "70%",
-    marginRight: 15,
-    borderWidth: 1,
-    borderColor: "#333333",
-    borderRadius: 8,
-    paddingHorizontal: 10,
+  hero: {
+    backgroundColor: "#495E57",
+    height: 428,
+    width: "100%",
+    padding: 15,
   },
-  todoBody: {
-    // backgroundColor: "lightgreen",
-    flex: 7,
-    width: "90%",
-    marginVertical: 20,
+  heroHeading: {
+    color: "#F4CE14",
+    fontSize: 50,
+    // fontSize: 64,
+    // fontFamily: "sans-serif-condensed",
   },
-  todoListItemContainer: {
-    backgroundColor: "rgb(0,150,255)",
-    marginVertical: 15,
-    height: 40,
-    justifyContent: "center",
-    alignItems: "center",
+  heroSubHeading: {
+    color: "#EDEFEE",
+    fontSize: 30,
+    marginBottom: 25,
   },
-  todoListItem: {
+  heroMessageImageContainer: {
+    flexDirection: "row",
+  },
+
+  heroMessage: {
     color: "white",
     fontSize: 20,
+    width: "70%",
   },
 });
