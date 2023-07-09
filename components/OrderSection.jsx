@@ -4,39 +4,46 @@ import brushetta from "../assets/brushetta.jpg";
 import grilledFish from "../assets/grilled-fish.jpg";
 import pasta from "../assets/pasta.jpg";
 import lemonDessert from "../assets/lemon-dessert.jpg";
+import { useState } from "react";
 const OrderSection = function () {
-  const menuArray = [
+  const menuArrayData = [
     [
       "Greek Salad",
       "The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.",
       "$12.99",
+      { category: "lunch" },
       greekSalad,
     ],
     [
       "Brushetta",
       "Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil. Toppings of tomato, veggies, beans, cured pork, or cheese are examples of variations. In Italy, a brustolina grill is frequently used to create bruschetta.",
       "$7.99",
+      { category: "lunch" },
       brushetta,
     ],
     [
       "Grilled Fish",
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed cursus.",
       "$20.00",
+      { category: "mains" },
       grilledFish,
     ],
     [
       "Pasta",
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet nec in ornare.",
       "$18.99",
+      { category: "lunch" },
       pasta,
     ],
     [
       "Lemon Dessert",
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio enim vitae.",
       "$6.99",
+      { category: "dessert" },
       lemonDessert,
     ],
   ];
+  const [menuArray, setMenuArray] = useState(menuArrayData);
   return (
     <>
       <View style={styles.menuFilterContainer}>
@@ -44,9 +51,42 @@ const OrderSection = function () {
           Order For Delivery!
         </Text>
         <View style={styles.menuFilter}>
-          <Text style={styles.filterText}>Lunch</Text>
-          <Text style={styles.filterText}>Mains</Text>
-          <Text style={styles.filterText}>Desserts</Text>
+          <Text
+            style={styles.filterText}
+            onPress={() => {
+              setMenuArray(
+                menuArray.filter((item) => {
+                  return item[3].category === "lunch";
+                })
+              );
+            }}
+          >
+            Lunch
+          </Text>
+          <Text
+            style={styles.filterText}
+            onPress={() => {
+              setMenuArray(
+                menuArray.filter((item) => {
+                  return item[3].category === "mains";
+                })
+              );
+            }}
+          >
+            Mains
+          </Text>
+          <Text
+            style={styles.filterText}
+            onPress={() => {
+              setMenuArray(
+                menuArray.filter((item) => {
+                  return item[3].category === "dessert";
+                })
+              );
+            }}
+          >
+            Desserts
+          </Text>
           <Text style={styles.filterText}>A La Carte</Text>
           <Text style={styles.filterText}>Special</Text>
         </View>
@@ -55,7 +95,7 @@ const OrderSection = function () {
       <ScrollView style={{ paddingHorizontal: 10 }}>
         <ScrollView>
           {menuArray.map((item, index) => {
-            const [menuItem, description, price, image] = item;
+            const [menuItem, description, price, none, image] = item;
             return (
               <View key={index} style={styles.menuItemContainer}>
                 <View
