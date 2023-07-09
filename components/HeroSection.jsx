@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Image, Button } from "react-native";
+import { StyleSheet, View, Text, Image, Button, Pressable } from "react-native";
 import heroImage from "../assets/hero-image.jpg";
 
 const HeroSection = function () {
@@ -14,7 +14,26 @@ const HeroSection = function () {
         <Image style={styles.heroImage} source={heroImage} />
       </View>
       <View style={styles.heroButtonContainer}>
-        <Button title="Reserve a table" color="#F4CE14" />
+        <Pressable
+          android_ripple={{ color: "#F4CEE" }}
+          style={styles.heroButtonContainer}
+          onPress={() => {
+            console.log("pressed the button");
+          }}
+        >
+          <View style={{ marginTop: "auto", marginBottom: "auto" }}>
+            <Text
+              style={{
+                fontSize: 15,
+                fontWeight: "bold",
+                marginLeft: "auto",
+                marginRight: "auto",
+              }}
+            >
+              RESERVE A TABLE
+            </Text>
+          </View>
+        </Pressable>
       </View>
     </View>
   );
@@ -57,6 +76,8 @@ const styles = StyleSheet.create({
   },
   heroButtonContainer: {
     width: 150,
+    height: 40,
     borderRadius: 14,
+    backgroundColor: "#F4CE14",
   },
 });
