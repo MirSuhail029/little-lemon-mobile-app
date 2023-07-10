@@ -1,40 +1,44 @@
 import { StyleSheet, View, Text, Image, Button, Pressable } from "react-native";
 import heroImage from "../assets/hero-image.jpg";
 
-const HeroSection = function () {
+const HeroSection = function (props) {
   return (
     <View style={styles.hero}>
       <Text style={styles.heroHeading}>Little Lemon</Text>
       <Text style={styles.heroSubHeading}>Chicago</Text>
-      <View style={styles.heroMessageImageContainer}>
-        <Text style={styles.heroMessage}>
-          We are a family owned Mediterranean restaurant, focused on traditional
-          recipes served with a modern twist.
-        </Text>
-        <Image style={styles.heroImage} source={heroImage} />
-      </View>
-      <View style={styles.heroButtonContainer}>
-        <Pressable
-          android_ripple={{ color: "#dddddd" }}
-          style={styles.heroPressableStyle}
-          onPress={() => {
-            console.log("pressed the button");
-          }}
-        >
-          <View style={{ marginTop: "auto", marginBottom: "auto" }}>
-            <Text
-              style={{
-                fontSize: 13,
-                fontWeight: "bold",
-                marginLeft: "auto",
-                marginRight: "auto",
-              }}
-            >
-              RESERVE A TABLE
-            </Text>
-          </View>
-        </Pressable>
-      </View>
+      {props.heroMessageImageVisible && (
+        <View style={styles.heroMessageImageContainer}>
+          <Text style={styles.heroMessage}>
+            We are a family owned Mediterranean restaurant, focused on
+            traditional recipes served with a modern twist.
+          </Text>
+          <Image style={styles.heroImage} source={heroImage} />
+        </View>
+      )}
+      {props.heroButtonVisible && (
+        <View style={styles.heroButtonContainer}>
+          <Pressable
+            android_ripple={{ color: "#dddddd" }}
+            style={styles.heroPressableStyle}
+            onPress={() => {
+              console.log("pressed the button");
+            }}
+          >
+            <View style={{ marginTop: "auto", marginBottom: "auto" }}>
+              <Text
+                style={{
+                  fontSize: 13,
+                  fontWeight: "bold",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                }}
+              >
+                RESERVE A TABLE
+              </Text>
+            </View>
+          </Pressable>
+        </View>
+      )}
     </View>
   );
 };
