@@ -1,15 +1,17 @@
-import { StyleSheet, View, Image } from "react-native";
+import { StyleSheet, View, Image, Pressable } from "react-native";
 import burgerIcon from "../assets/burger-menu.png";
 import logoIcon from "../assets/little-lemon-logo.png";
 import cartIcon from "../assets/cart-logo.png";
 
-const Navigation = function () {
+const Navigation = function (props) {
   return (
     <View style={styles.navigation}>
-      <Image
-        source={burgerIcon}
-        style={{ marginTop: "auto", marginBottom: "auto" }}
-      />
+      <Pressable onPress={props.setModalVisibility}>
+        <Image
+          source={burgerIcon}
+          style={{ marginTop: "auto", marginBottom: "auto" }}
+        />
+      </Pressable>
       <Image
         source={logoIcon}
         style={{ marginTop: "auto", marginBottom: "auto" }}

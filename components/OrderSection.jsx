@@ -44,6 +44,7 @@ const OrderSection = function () {
     ],
   ];
   const [menuArray, setMenuArray] = useState(menuArrayData);
+  const [isNoFilterResult, setIsNoFilterResult] = useState(false);
   return (
     <>
       <View style={styles.menuFilterContainer}>
@@ -59,6 +60,10 @@ const OrderSection = function () {
                   return item[3].category === "lunch";
                 })
               );
+              // console.log(menuArray);
+              menuArray.length === 0
+                ? setIsNoFilterResult(true)
+                : setIsNoFilterResult(false);
             }}
           >
             Lunch
@@ -71,6 +76,10 @@ const OrderSection = function () {
                   return item[3].category === "mains";
                 })
               );
+              // console.log(menuArray);
+              menuArray.length === 0
+                ? setIsNoFilterResult(true)
+                : setIsNoFilterResult(false);
             }}
           >
             Mains
@@ -83,16 +92,64 @@ const OrderSection = function () {
                   return item[3].category === "dessert";
                 })
               );
+              // console.log(menuArray);
+              menuArray.length === 0
+                ? setIsNoFilterResult(true)
+                : setIsNoFilterResult(false);
             }}
           >
             Desserts
           </Text>
-          <Text style={styles.filterText}>A La Carte</Text>
-          <Text style={styles.filterText}>Special</Text>
+          <Text
+            style={styles.filterText}
+            onPress={() => {
+              setMenuArray(
+                menuArray.filter((item) => {
+                  return item[3].category === "a la carte";
+                })
+              );
+              // console.log(menuArray);
+              menuArray.length === 0
+                ? setIsNoFilterResult(true)
+                : setIsNoFilterResult(false);
+            }}
+          >
+            A La Carte
+          </Text>
+          <Text
+            style={styles.filterText}
+            onPress={() => {
+              setMenuArray(
+                menuArray.filter((item) => {
+                  return item[3].category === "special";
+                })
+              );
+              // console.log(menuArray.length);
+              menuArray.length === 0
+                ? setIsNoFilterResult(true)
+                : setIsNoFilterResult(false);
+            }}
+          >
+            Special
+          </Text>
         </View>
       </View>
 
       <ScrollView style={{ paddingHorizontal: 10 }}>
+        {isNoFilterResult && (
+          <View style={{ height: 100, justifyContent: "center" }}>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: "bold",
+                backgroundColor: "lightgray",
+                textAlign: "center",
+              }}
+            >
+              No match found!
+            </Text>
+          </View>
+        )}
         <ScrollView>
           {menuArray.map((item, index) => {
             const [menuItem, description, price, none, image] = item;

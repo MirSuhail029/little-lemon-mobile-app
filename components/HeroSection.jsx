@@ -15,8 +15,8 @@ const HeroSection = function () {
       </View>
       <View style={styles.heroButtonContainer}>
         <Pressable
-          android_ripple={{ color: "#F4CEE" }}
-          style={styles.heroButtonContainer}
+          android_ripple={{ color: "#dddddd" }}
+          style={styles.heroPressableStyle}
           onPress={() => {
             console.log("pressed the button");
           }}
@@ -24,7 +24,7 @@ const HeroSection = function () {
           <View style={{ marginTop: "auto", marginBottom: "auto" }}>
             <Text
               style={{
-                fontSize: 15,
+                fontSize: 13,
                 fontWeight: "bold",
                 marginLeft: "auto",
                 marginRight: "auto",
@@ -76,8 +76,11 @@ const styles = StyleSheet.create({
   },
   heroButtonContainer: {
     width: 150,
-    height: 40,
+    height: 30,
     borderRadius: 14,
     backgroundColor: "#F4CE14",
+  },
+  heroPressableStyle: {
+    padding: 6,
   },
 });
