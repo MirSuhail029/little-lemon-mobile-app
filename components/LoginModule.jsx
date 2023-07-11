@@ -3,43 +3,70 @@ import Colors from "../global/Colors";
 import { useState } from "react";
 const LoginModule = function () {
   const [isRegister, setIsRegister] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
   return (
     <View style={styles.loginSection}>
-      <Text style={styles.heading}>Enter Login Details</Text>
-      <View style={styles.inputBoxContainer}>
-        <Text style={styles.inputBoxTitle}>Username</Text>
-        <TextInput style={styles.inputBox} placeholder="Enter Username" />
-      </View>
-      {isRegister && (
+      {isRegistered && (
+        <View style={styles.successScreen}>
+          <Text style={styles.successMessage}>Registration Successful !!!</Text>
+          <Text style={styles.redirectMessage}>
+            You will be redirected in a moment
+          </Text>
+        </View>
+      )}
+      {!isRegistered && <Text style={styles.heading}>Enter Login Details</Text>}
+      {!isRegistered && (
+        <View style={styles.inputBoxContainer}>
+          <Text style={styles.inputBoxTitle}>Username</Text>
+          <TextInput style={styles.inputBox} placeholder="Enter Username" />
+        </View>
+      )}
+      {isRegister && !isRegistered && (
         <View style={styles.inputBoxContainer}>
           <Text style={styles.inputBoxTitle}>Email ID</Text>
           <TextInput style={styles.inputBox} placeholder="Enter Email ID" />
         </View>
       )}
-      <View style={styles.inputBoxContainer}>
-        <Text style={styles.inputBoxTitle}>Password</Text>
-        <TextInput style={styles.inputBox} placeholder="Enter Password" />
-      </View>
-      <View style={styles.controlsContainer}>
-        {!isRegister && (
-          <Pressable style={styles.buttonContainer}>
-            <Text style={styles.buttonLabel}>Login</Text>
-          </Pressable>
-        )}
-        <Pressable
-          style={styles.buttonContainer}
-          onPress={() => {
-            setIsRegister(true);
-          }}
-        >
-          <Text style={styles.buttonLabel}>Register</Text>
-        </Pressable>
-        {isRegister && (
-          <Pressable style={styles.buttonContainer}>
-            <Text style={styles.buttonLabel}>Cancel</Text>
-          </Pressable>
-        )}
-      </View>
+      {!isRegistered && (
+        <View style={styles.inputBoxContainer}>
+          <Text style={styles.inputBoxTitle}>Password</Text>
+          <TextInput style={styles.inputBox} placeholder="Enter Password" />
+        </View>
+      )}
+      {!isRegistered && (
+        <View style={styles.controlsContainer}>
+          {!isRegister && (
+            <Pressable style={styles.buttonContainer}>
+              <Text style={styles.buttonLabel}>Login</Text>
+            </Pressable>
+          )}
+          {!isRegister && (
+            <Pressable
+              style={styles.buttonContainer}
+              onPress={() => {
+                setIsRegister(true);
+              }}
+            >
+              <Text style={styles.buttonLabel}>Register</Text>
+            </Pressable>
+          )}
+          {isRegister && (
+            <Pressable
+              style={styles.buttonContainer}
+              onPress={() => {
+                setIsRegistered(true);
+              }}
+            >
+              <Text style={styles.buttonLabel}>Register</Text>
+            </Pressable>
+          )}
+          {isRegister && (
+            <Pressable style={styles.buttonContainer}>
+              <Text style={styles.buttonLabel}>Cancel</Text>
+            </Pressable>
+          )}
+        </View>
+      )}
     </View>
   );
 };
@@ -92,5 +119,19 @@ const styles = StyleSheet.create({
     color: Colors.primaryYellow,
     fontSize: 14,
     fontWeight: "bold",
+  },
+  successScreen: {
+    paddingVertical: 100,
+  },
+  successMessage: {
+    fontSize: 25,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  redirectMessage: {
+    marginTop: 40,
+    fontSize: 15,
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });

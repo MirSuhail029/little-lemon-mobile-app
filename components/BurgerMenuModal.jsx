@@ -2,7 +2,6 @@ import { StyleSheet, View, Text, Modal, Pressable } from "react-native";
 import Colors from "../global/Colors";
 
 const BurgerMenuModal = function (props) {
-  console.log(props.modalVisibility);
   return (
     <Modal
       visible={props.modalVisibility}
