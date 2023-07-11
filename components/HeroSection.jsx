@@ -1,5 +1,6 @@
-import { StyleSheet, View, Text, Image, Button, Pressable } from "react-native";
+import { StyleSheet, View, Text, Image, Pressable } from "react-native";
 import heroImage from "../assets/hero-image.jpg";
+import Colors from "../global/Colors";
 
 const HeroSection = function (props) {
   return (
@@ -18,7 +19,7 @@ const HeroSection = function (props) {
       {props.heroButtonVisible && (
         <View style={styles.heroButtonContainer}>
           <Pressable
-            android_ripple={{ color: "#dddddd" }}
+            android_ripple={{ color: Colors.ripple }}
             style={styles.heroPressableStyle}
             onPress={() => {
               console.log("pressed the button");
@@ -46,19 +47,19 @@ export default HeroSection;
 
 const styles = StyleSheet.create({
   hero: {
-    backgroundColor: "#495E57",
+    backgroundColor: Colors.primaryGray,
     height: 350,
     width: "100%",
     padding: 15,
   },
   heroHeading: {
-    color: "#F4CE14",
+    color: Colors.primaryYellow,
     fontSize: 45,
     // fontSize: 64,
     // fontFamily: "sans-serif-condensed",
   },
   heroSubHeading: {
-    color: "#EDEFEE",
+    color: Colors.darkerWhiteShade,
     fontSize: 25,
     marginBottom: 25,
   },
@@ -67,13 +68,13 @@ const styles = StyleSheet.create({
   },
 
   heroMessage: {
-    color: "white",
+    color: Colors.primaryWhite,
     fontSize: 17,
     flex: 5,
     marginRight: 10,
   },
   heroImage: {
-    backgroundColor: "blue",
+    backgroundColor: Colors.primaryGray,
     borderRadius: 16,
     width: 150,
     height: 150,
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
     width: 150,
     height: 30,
     borderRadius: 14,
-    backgroundColor: "#F4CE14",
+    backgroundColor: Colors.primaryYellow,
   },
   heroPressableStyle: {
     padding: 6,

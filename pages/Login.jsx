@@ -2,7 +2,8 @@ import { useState } from "react";
 import BurgerMenuModal from "../components/BurgerMenuModal";
 import Navigation from "../components/Navigation";
 import HeroSection from "../components/HeroSection";
-import OrderSection from "../components/OrderSection";
+// import OrderSection from "../components/OrderSection";
+import Colors from "../global/Colors";
 import { View, Text, TextInput, Pressable } from "react-native";
 
 const Login = function () {
@@ -23,15 +24,15 @@ const Login = function () {
         <Text style={{ fontSize: 20, fontWeight: "bold" }}>
           Enter Login Details
         </Text>
-        <View style={{ backgroundColor: "#495E57", marginTop: 20 }}>
-          <Text style={{ color: "#F4CE14" }}>Username</Text>
+        <View style={{ backgroundColor: Colors.primaryGray, marginTop: 20 }}>
+          <Text style={{ color: Colors.primaryYellow }}>Username</Text>
           <TextInput
             style={{ borderWidth: 1, paddingHorizontal: 10 }}
             placeholder="Enter Username"
           />
         </View>
-        <View style={{ backgroundColor: "#495E57", marginTop: 20 }}>
-          <Text style={{ color: "#F4CE14" }}>Password</Text>
+        <View style={{ backgroundColor: Colors.primaryGray, marginTop: 20 }}>
+          <Text style={{ color: Colors.primaryYellow }}>Password</Text>
           <TextInput
             style={{ borderWidth: 1, paddingHorizontal: 10 }}
             placeholder="Enter Username"
@@ -44,11 +45,11 @@ const Login = function () {
             justifyContent: "space-around",
           }}
         >
-          <Pressable style={{ backgroundColor: "#495E57" }}>
-            <Text style={{ color: "#F4CE14" }}>Login</Text>
+          <Pressable style={{ backgroundColor: Colors.primaryGray }}>
+            <Text style={{ color: Colors.primaryYellow }}>Login</Text>
           </Pressable>
-          <Pressable style={{ backgroundColor: "#495E57" }}>
-            <Text style={{ color: "#F4CE14" }}>Register</Text>
+          <Pressable style={{ backgroundColor: Colors.primaryGray }}>
+            <Text style={{ color: Colors.primaryYellow }}>Register</Text>
           </Pressable>
         </View>
       </View>

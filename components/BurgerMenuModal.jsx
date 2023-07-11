@@ -1,4 +1,5 @@
 import { StyleSheet, View, Text, Modal, Pressable } from "react-native";
+import Colors from "../global/Colors";
 
 const BurgerMenuModal = function (props) {
   console.log(props.modalVisibility);
@@ -13,13 +14,13 @@ const BurgerMenuModal = function (props) {
           <Pressable onPress={props.setModalVisibility}>
             <Text
               style={{
-                color: "#F4CE14",
+                color: Colors.primaryYellow,
                 fontSize: 20,
                 fontWeight: "bold",
                 width: 100,
                 textAlign: "center",
                 borderWidth: 2,
-                borderColor: "#F4CE14",
+                borderColor: Colors.primaryYellow,
               }}
             >
               X Close

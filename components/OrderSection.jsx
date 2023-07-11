@@ -4,7 +4,9 @@ import brushetta from "../assets/brushetta.jpg";
 import grilledFish from "../assets/grilled-fish.jpg";
 import pasta from "../assets/pasta.jpg";
 import lemonDessert from "../assets/lemon-dessert.jpg";
+import Colors from "../global/Colors";
 import { useState } from "react";
+
 const OrderSection = function () {
   const menuArrayData = [
     [
@@ -159,7 +161,7 @@ const OrderSection = function () {
                   style={{
                     width: "80%",
                     borderTopWidth: 1,
-                    borderTopColor: "#EDEFEE",
+                    borderTopColor: Colors.lightGray,
                   }}
                 >
                   <Text
@@ -170,7 +172,7 @@ const OrderSection = function () {
                   <Text
                     style={{
                       fontSize: 16,
-                      color: "#495E57",
+                      color: Colors.primaryGray,
                       height: 40,
                       width: "95%",
                       marginVertical: 10,
@@ -182,7 +184,7 @@ const OrderSection = function () {
                     style={{
                       fontSize: 15,
                       fontWeight: "bold",
-                      color: "#495E57",
+                      color: Colors.primaryGray,
                       marginBottom: 10,
                     }}
                   >
@@ -215,14 +217,14 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   filterText: {
-    backgroundColor: "#EDEFEE",
+    backgroundColor: Colors.lightGray,
     width: 70,
     height: 35,
     borderRadius: 8,
     textAlign: "center",
     lineHeight: 30,
     fontWeight: "bold",
-    color: "#495E57",
+    color: Colors.primaryGray,
   },
   menuItemContainer: {
     // backgroundColor: "pink",
