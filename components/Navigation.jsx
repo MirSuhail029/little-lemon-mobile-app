@@ -27,7 +27,7 @@ export default Navigation;
 const styles = StyleSheet.create({
   navigation: {
     // backgroundColor: "pink",
-    height: 70,
+    height: 60,
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-around",

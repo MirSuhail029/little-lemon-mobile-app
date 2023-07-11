@@ -50,9 +50,7 @@ const OrderSection = function () {
   return (
     <>
       <View style={styles.menuFilterContainer}>
-        <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-          Order For Delivery!
-        </Text>
+        <Text style={styles.menuFilterHeading}>Order For Delivery!</Text>
         <View style={styles.menuFilter}>
           <Text
             style={styles.filterText}
@@ -165,15 +163,15 @@ const OrderSection = function () {
                   }}
                 >
                   <Text
-                    style={{ fontSize: 16, fontWeight: "bold", marginTop: 10 }}
+                    style={{ fontSize: 14, fontWeight: "bold", marginTop: 10 }}
                   >
                     {menuItem}
                   </Text>
                   <Text
                     style={{
-                      fontSize: 16,
+                      fontSize: 14,
                       color: Colors.primaryGray,
-                      height: 40,
+                      height: 36,
                       width: "95%",
                       marginVertical: 10,
                     }}
@@ -182,7 +180,7 @@ const OrderSection = function () {
                   </Text>
                   <Text
                     style={{
-                      fontSize: 15,
+                      fontSize: 13,
                       fontWeight: "bold",
                       color: Colors.primaryGray,
                       marginBottom: 10,
@@ -204,22 +202,27 @@ export default OrderSection;
 
 const styles = StyleSheet.create({
   menuFilterContainer: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
     justifyContent: "center",
-    height: 100,
+    height: 80,
     // backgroundColor: "red",
+  },
+  menuFilterHeading: {
+    fontSize: 18,
+    fontWeight: "bold",
   },
   menuFilter: {
     // backgroundColor: "pink",
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 10,
+    marginTop: 8,
+    marginBottom: 5,
   },
   filterText: {
     backgroundColor: Colors.lightGray,
     width: 70,
-    height: 35,
+    height: 30,
     borderRadius: 8,
     textAlign: "center",
     lineHeight: 30,
@@ -232,7 +235,7 @@ const styles = StyleSheet.create({
   },
   menuItemImage: {
     width: "20%",
-    height: 80,
+    height: 70,
     marginTop: "auto",
     marginBottom: "auto",
   },

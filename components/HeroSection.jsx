@@ -28,7 +28,7 @@ const HeroSection = function (props) {
             <View style={{ marginTop: "auto", marginBottom: "auto" }}>
               <Text
                 style={{
-                  fontSize: 13,
+                  fontSize: 12,
                   fontWeight: "bold",
                   marginLeft: "auto",
                   marginRight: "auto",
@@ -48,20 +48,21 @@ export default HeroSection;
 const styles = StyleSheet.create({
   hero: {
     backgroundColor: Colors.primaryGray,
-    height: 350,
+    height: 270,
     width: "100%",
-    padding: 15,
+    paddingHorizontal: 15,
   },
   heroHeading: {
     color: Colors.primaryYellow,
-    fontSize: 45,
+    fontSize: 38,
+    marginTop: 5,
     // fontSize: 64,
     // fontFamily: "sans-serif-condensed",
   },
   heroSubHeading: {
     color: Colors.darkerWhiteShade,
-    fontSize: 25,
-    marginBottom: 25,
+    fontSize: 19,
+    marginBottom: 15,
   },
   heroMessageImageContainer: {
     flexDirection: "row",
@@ -69,21 +70,23 @@ const styles = StyleSheet.create({
 
   heroMessage: {
     color: Colors.primaryWhite,
-    fontSize: 17,
-    flex: 5,
+    fontSize: 16,
+    flex: 6,
     marginRight: 10,
   },
   heroImage: {
     backgroundColor: Colors.primaryGray,
     borderRadius: 16,
-    width: 150,
-    height: 150,
+    flex: 2.5,
+    // width: 120,
+    height: 120,
   },
   heroButtonContainer: {
-    width: 150,
+    width: 140,
     height: 30,
     borderRadius: 14,
     backgroundColor: Colors.primaryYellow,
+    overflow: "hidden",
   },
   heroPressableStyle: {
     padding: 6,
