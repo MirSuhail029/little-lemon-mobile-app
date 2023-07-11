@@ -48,7 +48,8 @@ export default HeroSection;
 const styles = StyleSheet.create({
   hero: {
     backgroundColor: Colors.primaryGray,
-    height: 270,
+    // height: 270,
+    paddingBottom: 20,
     width: "100%",
     paddingHorizontal: 15,
   },

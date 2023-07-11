@@ -4,18 +4,14 @@ import Navigation from "../components/Navigation";
 import HeroSection from "../components/HeroSection";
 import LoginModule from "../components/LoginModule";
 
-const Login = function () {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const setModalVisibility = function () {
-    setIsModalVisible(!isModalVisible);
-  };
+const Login = function (props) {
   return (
     <>
       <BurgerMenuModal
-        modalVisibility={isModalVisible}
-        setModalVisibility={setModalVisibility}
+        modalVisibility={props.isModalVisible}
+        setModalVisibility={props.setModalVisibility}
       />
-      <Navigation setModalVisibility={setModalVisibility} />
+      <Navigation setModalVisibility={props.setModalVisibility} />
       <HeroSection heroMessageImageVisible />
       <LoginModule />
     </>

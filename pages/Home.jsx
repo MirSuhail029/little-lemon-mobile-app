@@ -4,19 +4,15 @@ import OrderSection from "../components/OrderSection";
 import BurgerMenuModal from "../components/BurgerMenuModal";
 import { useState } from "react";
 
-const Home = function () {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const setModalVisibility = function () {
-    setIsModalVisible(!isModalVisible);
-  };
+const Home = function (props) {
   return (
     <>
       <BurgerMenuModal
-        modalVisibility={isModalVisible}
-        setModalVisibility={setModalVisibility}
+        modalVisibility={props.isModalVisible}
+        setModalVisibility={props.setModalVisibility}
       />
 
-      <Navigation setModalVisibility={setModalVisibility} />
+      <Navigation setModalVisibility={props.setModalVisibility} />
       <HeroSection heroMessageImageVisible={true} heroButtonVisible={true} />
       <OrderSection />
     </>
