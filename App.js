@@ -21,10 +21,10 @@ export default function App() {
         setModalVisibility={setModalVisibility}
         isModalVisible={isModalVisible}
       /> */}
-      <Login
+      {/* <Login
         setModalVisibility={setModalVisibility}
         isModalVisible={isModalVisible}
-      />
+      /> */}
       {/* <TableReservation
         setModalVisibility={setModalVisibility}
         isModalVisible={isModalVisible}
@@ -37,10 +37,10 @@ export default function App() {
         setModalVisibility={setModalVisibility}
         isModalVisible={isModalVisible}
       /> */}
-      {/* <ReservationSuccess
+      <ReservationSuccess
         setModalVisibility={setModalVisibility}
         isModalVisible={isModalVisible}
-      /> */}
+      />
       <StatusBar style="auto" />
     </View>
   );

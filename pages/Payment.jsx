@@ -80,16 +80,19 @@ const styles = StyleSheet.create({
   controlsContainer: {
     flexDirection: "row",
     marginTop: 20,
-    justifyContent: "space-around",
+    justifyContent: "center",
   },
   buttonContainer: {
     backgroundColor: Colors.primaryGray,
-    paddingHorizontal: 25,
-    paddingVertical: 7,
+    width: 100,
+    height: 35,
+    marginHorizontal: 10,
   },
   buttonLabel: {
     color: Colors.primaryYellow,
     fontSize: 14,
     fontWeight: "bold",
+    textAlign: "center",
+    lineHeight: 35,
   },
 });
