@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text, Image, Pressable } from "react-native";
 import heroImage from "../assets/hero-image.jpg";
-import Colors from "../global/Colors";
+import Colors from "../constants/Colors";
 
 const HeroSection = function (props) {
   return (

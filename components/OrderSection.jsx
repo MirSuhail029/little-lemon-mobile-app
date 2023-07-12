@@ -4,7 +4,7 @@ import brushetta from "../assets/brushetta.jpg";
 import grilledFish from "../assets/grilled-fish.jpg";
 import pasta from "../assets/pasta.jpg";
 import lemonDessert from "../assets/lemon-dessert.jpg";
-import Colors from "../global/Colors";
+import Colors from "../constants/Colors";
 import { useState } from "react";
 
 const OrderSection = function () {

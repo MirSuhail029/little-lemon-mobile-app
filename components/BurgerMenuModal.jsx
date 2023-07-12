@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text, Modal, Pressable } from "react-native";
-import Colors from "../global/Colors";
+import Colors from "../constants/Colors";
 
 const BurgerMenuModal = function (props) {
   return (

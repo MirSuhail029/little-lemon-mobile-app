@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text, Pressable } from "react-native";
-import Colors from "../global/Colors";
+import Colors from "../constants/Colors";
 import BurgerMenuModal from "../components/BurgerMenuModal";
 import Navigation from "../components/Navigation";
 import HeroSection from "../components/HeroSection";

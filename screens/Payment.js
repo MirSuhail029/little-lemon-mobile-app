@@ -1,9 +1,9 @@
-import { StyleSheet, Text, TextInput, View, Pressable } from "react-native";
 import BurgerMenuModal from "../components/BurgerMenuModal";
-import Navigation from "../components/Navigation";
 import HeroSection from "../components/HeroSection";
-import Colors from "../global/Colors";
-const TableReservation = function (props) {
+import Navigation from "../components/Navigation";
+import { StyleSheet, View, Text, Pressable } from "react-native";
+import Colors from "../constants/Colors";
+const Payment = function (props) {
   return (
     <>
       <BurgerMenuModal
@@ -13,28 +13,29 @@ const TableReservation = function (props) {
 
       <Navigation setModalVisibility={props.setModalVisibility} />
       <HeroSection />
-      <View style={styles.tableReservation}>
-        <Text style={styles.containerHeading}>Table Reservation</Text>
+      <View style={styles.paymentContainer}>
+        <Text style={styles.containerHeading}>Make Payment</Text>
         <View style={styles.boxContainer}>
-          <Text style={styles.inputBoxTitle}>Date dd/mm/yyyy</Text>
-        </View>
-        <View style={styles.boxContainer}>
-          <Text style={styles.inputBoxTitle}>Time hh/mm</Text>
-        </View>
-        <View style={styles.boxContainer}>
-          <Text style={styles.inputBoxTitle}>Number of Persons</Text>
-        </View>
-        <View style={styles.inputBoxContainer}>
           <Text style={styles.inputBoxTitle}>Customer Name</Text>
-          <TextInput style={styles.inputBox} placeholder="Enter Name" />
         </View>
-        <View style={styles.inputBoxContainer}>
-          <Text style={styles.inputBoxTitle}>Contact Number</Text>
-          <TextInput style={styles.inputBox} placeholder="Enter Phone Number" />
+        <View style={styles.boxContainer}>
+          <Text style={styles.inputBoxTitle}>Reservation Number</Text>
         </View>
+        <View style={styles.boxContainer}>
+          <Text style={styles.inputBoxTitle}>Total Amount</Text>
+        </View>
+        <View style={styles.boxContainer}>
+          <Text style={styles.inputBoxTitle}>Date</Text>
+        </View>
+        <View style={styles.boxContainerAlt}>
+          <Text style={styles.inputBoxTitle}>Payment Type</Text>
+          <Text>Placeholder</Text>
+        </View>
+        <View></View>
+
         <View style={styles.controlsContainer}>
           <Pressable style={styles.buttonContainer}>
-            <Text style={styles.buttonLabel}>Submit</Text>
+            <Text style={styles.buttonLabel}>Pay</Text>
           </Pressable>
 
           <Pressable style={styles.buttonContainer}>
@@ -45,23 +46,16 @@ const TableReservation = function (props) {
     </>
   );
 };
-export default TableReservation;
+export default Payment;
 const styles = StyleSheet.create({
-  tableReservation: {
-    // backgroundColor: "green",
+  paymentContainer: {
     width: "100%",
-    paddingHorizontal: 15,
-    paddingVertical: 10,
+    padding: 15,
   },
   containerHeading: {
     fontSize: 18,
     fontWeight: "bold",
     textAlign: "center",
-  },
-  inputBoxContainer: {
-    backgroundColor: Colors.primaryGray,
-    marginTop: 15,
-    alignItems: "center",
   },
   boxContainer: {
     backgroundColor: Colors.primaryGray,
@@ -70,21 +64,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  boxContainerAlt: {
+    backgroundColor: Colors.primaryGray,
+    marginTop: 15,
+    height: 80,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   inputBoxTitle: {
     color: Colors.primaryYellow,
     fontSize: 14,
     fontWeight: "bold",
     // textAlign: "center",
-  },
-  inputBox: {
-    borderWidth: 1,
-    paddingHorizontal: 10,
-    textAlign: "center",
-    width: "80%",
-    backgroundColor: Colors.primaryWhite,
-    marginBottom: 5,
-    fontWeight: "bold",
-    fontSize: 12,
   },
   controlsContainer: {
     flexDirection: "row",

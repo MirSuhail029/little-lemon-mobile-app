@@ -1,15 +1,17 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import { useState } from "react";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import TableReservation from "./pages/TableReservation";
-import Payment from "./pages/Payment";
-import CardPayment from "./pages/CardPayment";
-import ReservationSuccess from "./pages/ReservationSuccess";
+import Home from "./screens/Home";
+import Login from "./screens/Login";
+import TableReservation from "./screens/TableReservation";
+// import Payment from "./screens/Payment";
+// import CardPayment from "./screens/CardPayment";
+import ReservationSuccess from "./screens/ReservationSuccess";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 // import greekSalad from "./assets/greek-salad.jpg";
-
+const stack = createNativeStackNavigator();
 export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const setModalVisibility = function () {
@@ -17,14 +19,19 @@ export default function App() {
   };
   return (
     <View style={styles.container}>
-      {/* <Home
+      <StatusBar style="auto" />
+      {/* <NavigationContainer>
+        <stack.Navigator>
+          <stack.Screen name="Home" component={Home} /> */}
+      {/* <stack.Screen name="payment" component={Demo} /> */}
+      <Home
         setModalVisibility={setModalVisibility}
         isModalVisible={isModalVisible}
-      /> */}
+      />
       {/* <Login
-        setModalVisibility={setModalVisibility}
-        isModalVisible={isModalVisible}
-      /> */}
+          setModalVisibility={setModalVisibility}
+          isModalVisible={isModalVisible}
+        /> */}
       {/* <TableReservation
         setModalVisibility={setModalVisibility}
         isModalVisible={isModalVisible}
@@ -37,11 +44,12 @@ export default function App() {
         setModalVisibility={setModalVisibility}
         isModalVisible={isModalVisible}
       /> */}
-      <ReservationSuccess
+      {/* <ReservationSuccess
         setModalVisibility={setModalVisibility}
         isModalVisible={isModalVisible}
-      />
-      <StatusBar style="auto" />
+      /> */}
+      {/* </stack.Navigator>
+      </NavigationContainer> */}
     </View>
   );
 }

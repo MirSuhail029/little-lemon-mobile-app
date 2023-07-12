@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text, TextInput, Pressable } from "react-native";
-import Colors from "../global/Colors";
+import Colors from "../constants/Colors";
 import { useState } from "react";
 const LoginModule = function () {
   const [isRegister, setIsRegister] = useState(false);

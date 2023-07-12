@@ -2,7 +2,7 @@ import BurgerMenuModal from "../components/BurgerMenuModal";
 import HeroSection from "../components/HeroSection";
 import Navigation from "../components/Navigation";
 import { StyleSheet, View, Text, Pressable } from "react-native";
-import Colors from "../global/Colors";
+import Colors from "../constants/Colors";
 
 const ReservationSuccess = function (props) {
   return (
