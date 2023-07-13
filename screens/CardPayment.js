@@ -32,12 +32,18 @@ const CardPayment = function (props) {
           <Pressable
             style={styles.buttonContainer}
             onPress={() => {
-              setIsPaymentSuccess(true);
+              // setIsPaymentSuccess(true);
+              props.navigation.navigate("ReservationSuccess");
             }}
           >
             <Text style={styles.buttonLabel}>Pay</Text>
           </Pressable>
-          <Pressable style={styles.buttonContainer}>
+          <Pressable
+            style={styles.buttonContainer}
+            onPress={() => {
+              props.navigation.navigate("Payment");
+            }}
+          >
             <Text style={styles.buttonLabel}>Cancel</Text>
           </Pressable>
         </View>

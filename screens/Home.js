@@ -10,7 +10,11 @@ const Home = function (props) {
         setModalVisibility={props.setModalVisibility}
       />
       <Navigation setModalVisibility={props.setModalVisibility} />
-      <HeroSection heroMessageImageVisible={true} heroButtonVisible={true} />
+      <HeroSection
+        heroMessageImageVisible={true}
+        heroButtonVisible={true}
+        navigation={props.navigation}
+      />
       <OrderSection />
     </>
   );

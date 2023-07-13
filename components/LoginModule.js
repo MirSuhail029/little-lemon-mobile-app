@@ -1,7 +1,7 @@
 import { StyleSheet, View, Text, TextInput, Pressable } from "react-native";
 import Colors from "../constants/Colors";
 import { useState } from "react";
-const LoginModule = function () {
+const LoginModule = function (props) {
   const [isRegister, setIsRegister] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   return (
@@ -36,7 +36,12 @@ const LoginModule = function () {
       {!isRegistered && (
         <View style={styles.controlsContainer}>
           {!isRegister && (
-            <Pressable style={styles.buttonContainer}>
+            <Pressable
+              style={styles.buttonContainer}
+              onPress={() => {
+                props.navigation.navigate("TableReservation");
+              }}
+            >
               <Text style={styles.buttonLabel}>Login</Text>
             </Pressable>
           )}
@@ -61,7 +66,13 @@ const LoginModule = function () {
             </Pressable>
           )}
           {isRegister && (
-            <Pressable style={styles.buttonContainer}>
+            <Pressable
+              style={styles.buttonContainer}
+              onPress={() => {
+                setIsRegister(false);
+                // props.navigation.navigate("Login");
+              }}
+            >
               <Text style={styles.buttonLabel}>Cancel</Text>
             </Pressable>
           )}

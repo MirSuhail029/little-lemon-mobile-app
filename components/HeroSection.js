@@ -22,7 +22,7 @@ const HeroSection = function (props) {
             android_ripple={{ color: Colors.ripple }}
             style={styles.heroPressableStyle}
             onPress={() => {
-              console.log("pressed the button");
+              props.navigation.navigate("Login");
             }}
           >
             <View style={{ marginTop: "auto", marginBottom: "auto" }}>

@@ -4,7 +4,7 @@ import Colors from "../constants/Colors";
 const BurgerMenuModal = function (props) {
   return (
     <Modal
-      visible={props.modalVisibility}
+      visible={false}
       animationType="slide"
       // transparent={true}
     >

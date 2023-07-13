@@ -33,11 +33,21 @@ const TableReservation = function (props) {
           <TextInput style={styles.inputBox} placeholder="Enter Phone Number" />
         </View>
         <View style={styles.controlsContainer}>
-          <Pressable style={styles.buttonContainer}>
+          <Pressable
+            style={styles.buttonContainer}
+            onPress={() => {
+              props.navigation.navigate("Payment");
+            }}
+          >
             <Text style={styles.buttonLabel}>Submit</Text>
           </Pressable>
 
-          <Pressable style={styles.buttonContainer}>
+          <Pressable
+            style={styles.buttonContainer}
+            onPress={() => {
+              props.navigation.navigate("Home");
+            }}
+          >
             <Text style={styles.buttonLabel}>Cancel</Text>
           </Pressable>
         </View>

@@ -13,7 +13,7 @@ const Login = function (props) {
       />
       <Navigation setModalVisibility={props.setModalVisibility} />
       <HeroSection heroMessageImageVisible />
-      <LoginModule />
+      <LoginModule navigation={props.navigation} />
     </>
   );
 };

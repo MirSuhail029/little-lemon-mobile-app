@@ -34,11 +34,21 @@ const Payment = function (props) {
         <View></View>
 
         <View style={styles.controlsContainer}>
-          <Pressable style={styles.buttonContainer}>
+          <Pressable
+            style={styles.buttonContainer}
+            onPress={() => {
+              props.navigation.navigate("CardPayment");
+            }}
+          >
             <Text style={styles.buttonLabel}>Pay</Text>
           </Pressable>
 
-          <Pressable style={styles.buttonContainer}>
+          <Pressable
+            style={styles.buttonContainer}
+            onPress={() => {
+              props.navigation.navigate("TableReservation");
+            }}
+          >
             <Text style={styles.buttonLabel}>Cancel</Text>
           </Pressable>
         </View>

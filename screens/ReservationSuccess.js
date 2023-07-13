@@ -17,7 +17,12 @@ const ReservationSuccess = function (props) {
       <View style={styles.reservationSuccessContainer}>
         <Text style={styles.successMessage}>Reservation Successful !!!</Text>
         <View style={styles.controlsContainer}>
-          <Pressable style={styles.buttonContainer}>
+          <Pressable
+            style={styles.buttonContainer}
+            onPress={() => {
+              props.navigation.navigate("Home");
+            }}
+          >
             <Text style={styles.buttonLabel}>Home</Text>
           </Pressable>
 
