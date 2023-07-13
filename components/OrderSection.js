@@ -159,7 +159,7 @@ const OrderSection = function () {
                   style={{
                     width: "80%",
                     borderTopWidth: 1,
-                    borderTopColor: Colors.lightGray,
+                    borderTopColor: Colors.darkGray,
                   }}
                 >
                   <Text
@@ -228,6 +228,7 @@ const styles = StyleSheet.create({
     lineHeight: 30,
     fontWeight: "bold",
     color: Colors.primaryGray,
+    elevation: 1,
   },
   menuItemContainer: {
     // backgroundColor: "pink",

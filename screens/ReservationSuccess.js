@@ -18,6 +18,7 @@ const ReservationSuccess = function (props) {
         <Text style={styles.successMessage}>Reservation Successful !!!</Text>
         <View style={styles.controlsContainer}>
           <Pressable
+            android_ripple={{ color: Colors.rippleDark }}
             style={styles.buttonContainer}
             onPress={() => {
               props.navigation.navigate("Home");
@@ -26,7 +27,10 @@ const ReservationSuccess = function (props) {
             <Text style={styles.buttonLabel}>Home</Text>
           </Pressable>
 
-          <Pressable style={styles.buttonContainer}>
+          <Pressable
+            android_ripple={{ color: Colors.rippleDark }}
+            style={styles.buttonContainer}
+          >
             <Text style={styles.buttonLabel}>Close</Text>
           </Pressable>
         </View>
@@ -61,5 +65,6 @@ const styles = StyleSheet.create({
   successMessage: {
     fontSize: 25,
     fontWeight: "bold",
+    textAlign: "center",
   },
 });

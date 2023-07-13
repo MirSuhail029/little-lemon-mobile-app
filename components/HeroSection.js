@@ -25,17 +25,8 @@ const HeroSection = function (props) {
               props.navigation.navigate("Login");
             }}
           >
-            <View style={{ marginTop: "auto", marginBottom: "auto" }}>
-              <Text
-                style={{
-                  fontSize: 12,
-                  fontWeight: "bold",
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                }}
-              >
-                RESERVE A TABLE
-              </Text>
+            <View>
+              <Text style={styles.heroButton}>RESERVE A TABLE</Text>
             </View>
           </Pressable>
         </View>
@@ -48,7 +39,6 @@ export default HeroSection;
 const styles = StyleSheet.create({
   hero: {
     backgroundColor: Colors.primaryGray,
-    // height: 270,
     paddingBottom: 20,
     width: "100%",
     paddingHorizontal: 15,
@@ -89,7 +79,12 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primaryYellow,
     overflow: "hidden",
   },
-  heroPressableStyle: {
-    padding: 6,
+  heroButton: {
+    fontSize: 10,
+    height: "100%",
+    textAlign: "center",
+    fontWeight: "bold",
+    lineHeight: 30,
+    fontSize: 12,
   },
 });

@@ -1,5 +1,4 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
 import { useState } from "react";
 import Home from "./screens/Home";
 import Login from "./screens/Login";
@@ -21,16 +20,40 @@ export default function App() {
     <>
       <StatusBar style="light" />
       <NavigationContainer>
-        <stack.Navigator initialRouteName="Home">
-          <stack.Screen name="Home" component={Home} />
-          <stack.Screen name="Login" component={Login} />
-          <stack.Screen name="CardPayment" component={CardPayment} />
-          <stack.Screen name="Payment" component={Payment} />
+        <stack.Navigator
+          initialRouteName="Home"
+          screenOptions={{ headerStyle: { backgroundColor: "green" } }}
+        >
+          <stack.Screen
+            name="Home"
+            component={Home}
+            options={{ headerShown: false }}
+          />
+          <stack.Screen
+            name="Login"
+            component={Login}
+            options={{ headerShown: false }}
+          />
+          <stack.Screen
+            name="CardPayment"
+            component={CardPayment}
+            options={{ headerShown: false }}
+          />
+          <stack.Screen
+            name="Payment"
+            component={Payment}
+            options={{ headerShown: false }}
+          />
           <stack.Screen
             name="ReservationSuccess"
             component={ReservationSuccess}
+            options={{ headerShown: false }}
           />
-          <stack.Screen name="TableReservation" component={TableReservation} />
+          <stack.Screen
+            name="TableReservation"
+            component={TableReservation}
+            options={{ headerShown: false }}
+          />
         </stack.Navigator>
       </NavigationContainer>
     </>

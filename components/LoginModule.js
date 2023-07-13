@@ -4,6 +4,9 @@ import { useState } from "react";
 const LoginModule = function (props) {
   const [isRegister, setIsRegister] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
+  const [inputValue, setInputValue] = useState([]);
+
+  console.log(inputValue);
   return (
     <View style={styles.loginSection}>
       {isRegistered && (
@@ -18,7 +21,13 @@ const LoginModule = function (props) {
       {!isRegistered && (
         <View style={styles.inputBoxContainer}>
           <Text style={styles.inputBoxTitle}>Username</Text>
-          <TextInput style={styles.inputBox} placeholder="Enter Username" />
+          <TextInput
+            style={styles.inputBox}
+            placeholder="Enter Username"
+            onChange={(e) => {
+              setInputValue(e.target.value);
+            }}
+          />
         </View>
       )}
       {isRegister && !isRegistered && (
@@ -37,6 +46,7 @@ const LoginModule = function (props) {
         <View style={styles.controlsContainer}>
           {!isRegister && (
             <Pressable
+              android_ripple={{ color: Colors.rippleDark }}
               style={styles.buttonContainer}
               onPress={() => {
                 props.navigation.navigate("TableReservation");
@@ -47,6 +57,7 @@ const LoginModule = function (props) {
           )}
           {!isRegister && (
             <Pressable
+              android_ripple={{ color: Colors.rippleDark }}
               style={styles.buttonContainer}
               onPress={() => {
                 setIsRegister(true);
@@ -57,6 +68,7 @@ const LoginModule = function (props) {
           )}
           {isRegister && (
             <Pressable
+              android_ripple={{ color: Colors.rippleDark }}
               style={styles.buttonContainer}
               onPress={() => {
                 setIsRegistered(true);
@@ -67,6 +79,7 @@ const LoginModule = function (props) {
           )}
           {isRegister && (
             <Pressable
+              android_ripple={{ color: Colors.rippleDark }}
               style={styles.buttonContainer}
               onPress={() => {
                 setIsRegister(false);

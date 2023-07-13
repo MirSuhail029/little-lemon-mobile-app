@@ -30,6 +30,7 @@ const CardPayment = function (props) {
         </View>
         <View style={styles.controlsContainer}>
           <Pressable
+            android_ripple={{ color: Colors.rippleDark }}
             style={styles.buttonContainer}
             onPress={() => {
               // setIsPaymentSuccess(true);
@@ -39,6 +40,7 @@ const CardPayment = function (props) {
             <Text style={styles.buttonLabel}>Pay</Text>
           </Pressable>
           <Pressable
+            android_ripple={{ color: Colors.rippleDark }}
             style={styles.buttonContainer}
             onPress={() => {
               props.navigation.navigate("Payment");

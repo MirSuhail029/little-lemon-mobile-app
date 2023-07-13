@@ -34,6 +34,7 @@ const TableReservation = function (props) {
         </View>
         <View style={styles.controlsContainer}>
           <Pressable
+            android_ripple={{ color: Colors.rippleDark }}
             style={styles.buttonContainer}
             onPress={() => {
               props.navigation.navigate("Payment");
@@ -43,6 +44,7 @@ const TableReservation = function (props) {
           </Pressable>
 
           <Pressable
+            android_ripple={{ color: Colors.rippleDark }}
             style={styles.buttonContainer}
             onPress={() => {
               props.navigation.navigate("Home");
