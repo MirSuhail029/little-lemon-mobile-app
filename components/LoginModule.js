@@ -4,9 +4,11 @@ import { useState } from "react";
 const LoginModule = function (props) {
   const [isRegister, setIsRegister] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
-  const [inputValue, setInputValue] = useState([]);
+  const [username, setUsername] = useState();
+  const [emailId, setEmailId] = useState();
+  const [password, setPassword] = useState();
+  const [newRegistration, setNewRegistration] = useState([]);
 
-  console.log(inputValue);
   return (
     <View style={styles.loginSection}>
       {isRegistered && (
@@ -24,22 +26,37 @@ const LoginModule = function (props) {
           <TextInput
             style={styles.inputBox}
             placeholder="Enter Username"
-            onChange={(e) => {
-              setInputValue(e.target.value);
+            onChangeText={(value) => {
+              setUsername(value);
             }}
+            value={username}
           />
         </View>
       )}
       {isRegister && !isRegistered && (
         <View style={styles.inputBoxContainer}>
           <Text style={styles.inputBoxTitle}>Email ID</Text>
-          <TextInput style={styles.inputBox} placeholder="Enter Email ID" />
+          <TextInput
+            style={styles.inputBox}
+            placeholder="Enter Email ID"
+            onChangeText={(value) => {
+              setEmailId(value);
+            }}
+            value={emailId}
+          />
         </View>
       )}
       {!isRegistered && (
         <View style={styles.inputBoxContainer}>
           <Text style={styles.inputBoxTitle}>Password</Text>
-          <TextInput style={styles.inputBox} placeholder="Enter Password" />
+          <TextInput
+            style={styles.inputBox}
+            placeholder="Enter Password"
+            onChangeText={(value) => {
+              setPassword(value);
+            }}
+            value={password}
+          />
         </View>
       )}
       {!isRegistered && (
@@ -49,7 +66,17 @@ const LoginModule = function (props) {
               android_ripple={{ color: Colors.rippleDark }}
               style={styles.buttonContainer}
               onPress={() => {
-                props.navigation.navigate("TableReservation");
+                if (username === undefined || password === undefined) {
+                  console.log("enter all values");
+                } else if (username === "xyz" && password === "123") {
+                  setUsername("");
+                  setPassword("");
+                  props.navigation.navigate("TableReservation");
+                } else {
+                  console.log("invalid input");
+                  setUsername("");
+                  setPassword("");
+                }
               }}
             >
               <Text style={styles.buttonLabel}>Login</Text>
@@ -61,6 +88,8 @@ const LoginModule = function (props) {
               style={styles.buttonContainer}
               onPress={() => {
                 setIsRegister(true);
+                setUsername("");
+                setPassword("");
               }}
             >
               <Text style={styles.buttonLabel}>Register</Text>
@@ -71,7 +100,16 @@ const LoginModule = function (props) {
               android_ripple={{ color: Colors.rippleDark }}
               style={styles.buttonContainer}
               onPress={() => {
-                setIsRegistered(true);
+                if (
+                  username === undefined ||
+                  emailId === undefined ||
+                  password === undefined
+                ) {
+                  console.log("enter all values");
+                } else {
+                  setNewRegistration([username, emailId, password]);
+                  setIsRegistered(true);
+                }
               }}
             >
               <Text style={styles.buttonLabel}>Register</Text>
@@ -83,7 +121,6 @@ const LoginModule = function (props) {
               style={styles.buttonContainer}
               onPress={() => {
                 setIsRegister(false);
-                // props.navigation.navigate("Login");
               }}
             >
               <Text style={styles.buttonLabel}>Cancel</Text>
