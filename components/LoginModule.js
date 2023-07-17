@@ -56,6 +56,8 @@ const LoginModule = function (props) {
               setPassword(value);
             }}
             value={password}
+            keyboardType="numeric"
+            secureTextEntry={true}
           />
         </View>
       )}
@@ -159,7 +161,7 @@ const styles = StyleSheet.create({
   inputBox: {
     borderWidth: 1,
     paddingHorizontal: 10,
-    textAlign: "center",
+    // textAlign: "center",
     width: "80%",
     backgroundColor: Colors.primaryWhite,
     marginBottom: 5,

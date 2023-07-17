@@ -3,6 +3,7 @@ import BurgerMenuModal from "../components/BurgerMenuModal";
 import Navigation from "../components/Navigation";
 import HeroSection from "../components/HeroSection";
 import LoginModule from "../components/LoginModule";
+import { KeyboardAvoidingView, ScrollView } from "react-native";
 
 const Login = function (props) {
   return (
@@ -13,7 +14,11 @@ const Login = function (props) {
       />
       <Navigation setModalVisibility={props.setModalVisibility} />
       <HeroSection heroMessageImageVisible />
-      <LoginModule navigation={props.navigation} />
+      <ScrollView>
+        <KeyboardAvoidingView>
+          <LoginModule navigation={props.navigation} />
+        </KeyboardAvoidingView>
+      </ScrollView>
     </>
   );
 };
