@@ -16,6 +16,7 @@ export default function App() {
   const setModalVisibility = function () {
     setIsModalVisible(!isModalVisible);
   };
+
   return (
     <>
       <StatusBar style="light" />

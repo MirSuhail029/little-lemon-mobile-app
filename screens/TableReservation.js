@@ -132,12 +132,11 @@ const TableReservation = function (props) {
                       customerPhone,
                     ]);
                     props.navigation.navigate("Payment");
-                    setSelectedDate("");
-                    setSelectedTime("");
-                    setNoOfPersons("");
-                    setCustomerName("");
-                    setCustomerPhone("");
-                    console.log(reservationInfo);
+                    // setSelectedDate("");
+                    // setSelectedTime(new Date());
+                    // setNoOfPersons("1");
+                    // setCustomerName("");
+                    // setCustomerPhone("");
                   } else {
                     console.log("Please enter all the values");
                   }

@@ -3,6 +3,29 @@ import HeroSection from "../components/HeroSection";
 import Navigation from "../components/Navigation";
 import { StyleSheet, View, Text, Pressable } from "react-native";
 import Colors from "../constants/Colors";
+import { useState } from "react";
+
+const RadioButton = function (props) {
+  const [isButtonSelected, setIsButtonSelected] = useState(false);
+  const appliedStyle = isButtonSelected
+    ? styles.radioButtonSelected
+    : styles.radioButton;
+  return (
+    <>
+      <Pressable
+        onPress={() => {
+          setIsButtonSelected(!isButtonSelected);
+        }}
+      >
+        <View style={styles.buttonTextContainer}>
+          <View style={appliedStyle}></View>
+          <Text style={styles.radioText}>{props.title}</Text>
+        </View>
+      </Pressable>
+    </>
+  );
+};
+
 const Payment = function (props) {
   return (
     <>
@@ -29,7 +52,15 @@ const Payment = function (props) {
         </View>
         <View style={styles.boxContainerAlt}>
           <Text style={styles.inputBoxTitle}>Payment Type</Text>
-          <Text>Placeholder</Text>
+
+          {
+            <View style={styles.radioButtonGroup}>
+              <RadioButton title={"Cash"} />
+              <RadioButton title={"Card"} />
+              <RadioButton title={"Internet Banking"} />
+              <RadioButton title={"UPI"} />
+            </View>
+          }
         </View>
         <View></View>
 
@@ -106,5 +137,33 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     lineHeight: 35,
+  },
+  radioButtonGroup: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+    width: "100%",
+  },
+  buttonTextContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  radioButton: {
+    width: 10,
+    height: 10,
+    backgroundColor: Colors.primaryWhite,
+    borderRadius: 10,
+    marginRight: 5,
+  },
+  radioButtonSelected: {
+    width: 10,
+    height: 10,
+    backgroundColor: Colors.primaryBlack,
+    borderRadius: 10,
+    marginRight: 5,
+  },
+  radioText: {
+    color: Colors.primaryWhite,
   },
 });
