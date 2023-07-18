@@ -12,9 +12,16 @@ import grilledFish from "../assets/grilled-fish.jpg";
 import pasta from "../assets/pasta.jpg";
 import lemonDessert from "../assets/lemon-dessert.jpg";
 import Colors from "../constants/Colors";
+import BurgerMenuModal from "../components/BurgerMenuModal";
+import Navigation from "../components/Navigation";
 const Dish = function (props) {
   return (
     <>
+      <BurgerMenuModal
+        modalVisibility={props.isModalVisible}
+        setModalVisibility={props.setModalVisibility}
+      />
+      <Navigation setModalVisibility={props.setModalVisibility} />
       <View style={styles.rootContainer}>
         <View style={styles.contentContainer}>
           <View style={styles.imageContainer}>
@@ -98,7 +105,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     width: "100%",
     justifyContent: "center",
-    marginTop: 100,
+    marginTop: 60,
   },
   control: {
     marginHorizontal: 10,

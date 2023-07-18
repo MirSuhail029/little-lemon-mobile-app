@@ -15,6 +15,13 @@ import Colors from "../constants/Colors";
 import { useState } from "react";
 
 const OrderSection = function (props) {
+  const filterDataArray = [
+    "Lunch",
+    "Mains",
+    "Desserts",
+    "A La Carte",
+    "Special",
+  ];
   const menuArrayData = [
     [
       "Greek Salad",
@@ -54,163 +61,68 @@ const OrderSection = function (props) {
   ];
   const [menuArray, setMenuArray] = useState(menuArrayData);
   const [isNoFilterResult, setIsNoFilterResult] = useState(false);
+
   return (
     <>
       <View style={styles.menuFilterContainer}>
         <Text style={styles.menuFilterHeading}>Order For Delivery!</Text>
         <View style={styles.menuFilter}>
-          <Text
-            style={styles.filterText}
-            onPress={() => {
-              setMenuArray(
-                menuArray.filter((item) => {
-                  return item[3].category === "lunch";
-                })
-              );
-              // console.log(menuArray);
-              menuArray.length === 0
-                ? setIsNoFilterResult(true)
-                : setIsNoFilterResult(false);
-            }}
-          >
-            Lunch
-          </Text>
-          <Text
-            style={styles.filterText}
-            onPress={() => {
-              setMenuArray(
-                menuArray.filter((item) => {
-                  return item[3].category === "mains";
-                })
-              );
-              // console.log(menuArray);
-              menuArray.length === 0
-                ? setIsNoFilterResult(true)
-                : setIsNoFilterResult(false);
-            }}
-          >
-            Mains
-          </Text>
-          <Text
-            style={styles.filterText}
-            onPress={() => {
-              setMenuArray(
-                menuArray.filter((item) => {
-                  return item[3].category === "dessert";
-                })
-              );
-              // console.log(menuArray);
-              menuArray.length === 0
-                ? setIsNoFilterResult(true)
-                : setIsNoFilterResult(false);
-            }}
-          >
-            Desserts
-          </Text>
-          <Text
-            style={styles.filterText}
-            onPress={() => {
-              setMenuArray(
-                menuArray.filter((item) => {
-                  return item[3].category === "a la carte";
-                })
-              );
-              // console.log(menuArray);
-              menuArray.length === 0
-                ? setIsNoFilterResult(true)
-                : setIsNoFilterResult(false);
-            }}
-          >
-            A La Carte
-          </Text>
-          <Text
-            style={styles.filterText}
-            onPress={() => {
-              setMenuArray(
-                menuArray.filter((item) => {
-                  return item[3].category === "special";
-                })
-              );
-              // console.log(menuArray.length);
-              menuArray.length === 0
-                ? setIsNoFilterResult(true)
-                : setIsNoFilterResult(false);
-            }}
-          >
-            Special
-          </Text>
+          {filterDataArray.map((arrayItem, index) => {
+            return (
+              <View key={index}>
+                <Text
+                  style={styles.filterText}
+                  onPress={() => {
+                    setMenuArray(menuArrayData);
+                    // console.log(arrayItem);
+                    setMenuArray(
+                      menuArray.filter((item) => {
+                        return item[3].category === arrayItem.toLowerCase();
+                      })
+                    );
+                    menuArray.length === 0
+                      ? setIsNoFilterResult(true)
+                      : setIsNoFilterResult(false);
+                  }}
+                >
+                  {arrayItem}
+                </Text>
+              </View>
+            );
+          })}
         </View>
       </View>
 
       <ScrollView style={{ paddingHorizontal: 10 }}>
         {isNoFilterResult && (
-          <View style={{ height: 100, justifyContent: "center" }}>
-            <Text
-              style={{
-                fontSize: 20,
-                fontWeight: "bold",
-                backgroundColor: "lightgray",
-                textAlign: "center",
-              }}
-            >
-              No match found!
-            </Text>
+          <View style={styles.filterContainer}>
+            <Text style={styles.noMatchStyle}>No match found!</Text>
           </View>
         )}
         <ScrollView>
-          {menuArray.map((item, index) => {
-            const [menuItem, description, price, none, image] = item;
-            return (
-              <Pressable
-                key={index}
-                onPress={() => {
-                  props.navigation.navigate("Dish");
-                }}
-              >
-                <View style={styles.menuItemContainer}>
-                  <View
-                    style={{
-                      width: "80%",
-                      borderTopWidth: 1,
-                      borderTopColor: Colors.darkGray,
-                    }}
-                  >
-                    <Text
-                      style={{
-                        fontSize: 14,
-                        fontWeight: "bold",
-                        marginTop: 10,
-                      }}
-                    >
-                      {menuItem}
-                    </Text>
-                    <Text
-                      style={{
-                        fontSize: 14,
-                        color: Colors.primaryGray,
-                        height: 36,
-                        width: "95%",
-                        marginVertical: 10,
-                      }}
-                    >
-                      {description}
-                    </Text>
-                    <Text
-                      style={{
-                        fontSize: 13,
-                        fontWeight: "bold",
-                        color: Colors.primaryGray,
-                        marginBottom: 10,
-                      }}
-                    >
-                      {price}
-                    </Text>
+          {true &&
+            menuArray.map((item, index) => {
+              const [menuItem, description, price, none, image] = item;
+              return (
+                <Pressable
+                  key={index}
+                  onPress={() => {
+                    props.navigation.navigate("Dish");
+                  }}
+                >
+                  <View style={styles.menuItemContainer}>
+                    <View style={styles.innerContainer}>
+                      <Text style={styles.menuItemTitle}>{menuItem}</Text>
+                      <Text style={styles.menuItemDescription}>
+                        {description}
+                      </Text>
+                      <Text style={styles.menuItemPrice}>{price}</Text>
+                    </View>
+                    <Image source={image} style={styles.menuItemImage} />
                   </View>
-                  <Image source={image} style={styles.menuItemImage} />
-                </View>
-              </Pressable>
-            );
-          })}
+                </Pressable>
+              );
+            })}
         </ScrollView>
       </ScrollView>
     </>
@@ -223,14 +135,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     justifyContent: "center",
     height: 80,
-    // backgroundColor: "red",
   },
   menuFilterHeading: {
     fontSize: 18,
     fontWeight: "bold",
   },
   menuFilter: {
-    // backgroundColor: "pink",
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-between",
@@ -252,10 +162,43 @@ const styles = StyleSheet.create({
     // backgroundColor: "pink",
     flexDirection: "row",
   },
+  innerContainer: {
+    width: "80%",
+    borderTopWidth: 1,
+    borderTopColor: Colors.darkGray,
+  },
+  menuItemTitle: {
+    fontSize: 14,
+    fontWeight: "bold",
+    marginTop: 10,
+  },
+  menuItemDescription: {
+    fontSize: 14,
+    color: Colors.primaryGray,
+    height: 36,
+    width: "95%",
+    marginVertical: 10,
+  },
+  menuItemPrice: {
+    fontSize: 13,
+    fontWeight: "bold",
+    color: Colors.primaryGray,
+    marginBottom: 10,
+  },
   menuItemImage: {
     width: "20%",
     height: 70,
     marginTop: "auto",
     marginBottom: "auto",
+  },
+  filterContainer: {
+    height: 100,
+    justifyContent: "center",
+  },
+  noMatchStyle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    backgroundColor: "lightgray",
+    textAlign: "center",
   },
 });
