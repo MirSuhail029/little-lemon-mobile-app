@@ -13,11 +13,12 @@ import Navigation from "../components/Navigation";
 import HeroSection from "../components/HeroSection";
 import Colors from "../constants/Colors";
 import { useState } from "react";
-import { Calendar } from "react-native-calendars";
+// import { Calendar } from "react-native-calendars";
+import Datetimepicker from "@react-native-community/datetimepicker";
 
 const TableReservation = function (props) {
   const [isDateModal, setIsDateModal] = useState(false);
-  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState(new Date().now);
   const [isTimeVisible, setIsTimeVisible] = useState(false);
   const [selectedTime, setSelectedTime] = useState(new Date());
   const [isPersonsVisible, setIsPersonsVisible] = useState(false);
@@ -25,6 +26,8 @@ const TableReservation = function (props) {
   const [customerName, setCustomerName] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
   const [reservationInfo, setReservationInfo] = useState([]);
+
+  console.log(new Date().toLocaleString());
   return (
     <>
       <BurgerMenuModal
@@ -32,9 +35,15 @@ const TableReservation = function (props) {
         setModalVisibility={props.setModalVisibility}
       />
       <Modal visible={isDateModal} animationType="slide">
-        <Calendar
+        {/* <Calendar
           onDayPress={(day) => {
             setSelectedDate(day.dateString);
+            setIsDateModal(!isDateModal);
+          }}
+        /> */}
+        <Datetimepicker
+          value={new Date(Date.now())}
+          onChange={() => {
             setIsDateModal(!isDateModal);
           }}
         />
@@ -53,9 +62,11 @@ const TableReservation = function (props) {
             >
               <View style={styles.boxContainer}>
                 <Text style={styles.inputBoxTitle}>Date</Text>
-                {selectedDate && (
+                {true && (
                   <Text style={styles.displayedData}>
-                    {selectedDate.split("-").reverse().join("-")}
+                    {/* hello */}
+                    {selectedDate}
+                    {/* {selectedDate.split("-").reverse().join("-")} */}
                   </Text>
                 )}
               </View>

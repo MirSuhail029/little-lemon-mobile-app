@@ -1,4 +1,11 @@
-import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
+import {
+  StyleSheet,
+  ScrollView,
+  View,
+  Text,
+  Image,
+  Pressable,
+} from "react-native";
 import greekSalad from "../assets/greek-salad.jpg";
 import brushetta from "../assets/brushetta.jpg";
 import grilledFish from "../assets/grilled-fish.jpg";
@@ -7,7 +14,7 @@ import lemonDessert from "../assets/lemon-dessert.jpg";
 import Colors from "../constants/Colors";
 import { useState } from "react";
 
-const OrderSection = function () {
+const OrderSection = function (props) {
   const menuArrayData = [
     [
       "Greek Salad",
@@ -154,43 +161,54 @@ const OrderSection = function () {
           {menuArray.map((item, index) => {
             const [menuItem, description, price, none, image] = item;
             return (
-              <View key={index} style={styles.menuItemContainer}>
-                <View
-                  style={{
-                    width: "80%",
-                    borderTopWidth: 1,
-                    borderTopColor: Colors.darkGray,
-                  }}
-                >
-                  <Text
-                    style={{ fontSize: 14, fontWeight: "bold", marginTop: 10 }}
-                  >
-                    {menuItem}
-                  </Text>
-                  <Text
+              <Pressable
+                key={index}
+                onPress={() => {
+                  props.navigation.navigate("Dish");
+                }}
+              >
+                <View style={styles.menuItemContainer}>
+                  <View
                     style={{
-                      fontSize: 14,
-                      color: Colors.primaryGray,
-                      height: 36,
-                      width: "95%",
-                      marginVertical: 10,
+                      width: "80%",
+                      borderTopWidth: 1,
+                      borderTopColor: Colors.darkGray,
                     }}
                   >
-                    {description}
-                  </Text>
-                  <Text
-                    style={{
-                      fontSize: 13,
-                      fontWeight: "bold",
-                      color: Colors.primaryGray,
-                      marginBottom: 10,
-                    }}
-                  >
-                    {price}
-                  </Text>
+                    <Text
+                      style={{
+                        fontSize: 14,
+                        fontWeight: "bold",
+                        marginTop: 10,
+                      }}
+                    >
+                      {menuItem}
+                    </Text>
+                    <Text
+                      style={{
+                        fontSize: 14,
+                        color: Colors.primaryGray,
+                        height: 36,
+                        width: "95%",
+                        marginVertical: 10,
+                      }}
+                    >
+                      {description}
+                    </Text>
+                    <Text
+                      style={{
+                        fontSize: 13,
+                        fontWeight: "bold",
+                        color: Colors.primaryGray,
+                        marginBottom: 10,
+                      }}
+                    >
+                      {price}
+                    </Text>
+                  </View>
+                  <Image source={image} style={styles.menuItemImage} />
                 </View>
-                <Image source={image} style={styles.menuItemImage} />
-              </View>
+              </Pressable>
             );
           })}
         </ScrollView>

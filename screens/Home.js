@@ -15,7 +15,7 @@ const Home = function (props) {
         heroButtonVisible={true}
         navigation={props.navigation}
       />
-      <OrderSection />
+      <OrderSection navigation={props.navigation} />
     </>
   );
 };

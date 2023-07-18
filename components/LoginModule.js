@@ -43,6 +43,7 @@ const LoginModule = function (props) {
               setEmailId(value);
             }}
             value={emailId}
+            inputType
           />
         </View>
       )}
