@@ -3,6 +3,7 @@ import Colors from "../constants/Colors";
 import BurgerMenuModal from "../components/BurgerMenuModal";
 import Navigation from "../components/Navigation";
 import HeroSection from "../components/HeroSection";
+import { SafeAreaView } from "react-native-safe-area-context";
 const CardPayment = function (props) {
   return (
     <>
@@ -10,8 +11,9 @@ const CardPayment = function (props) {
         modalVisibility={props.isModalVisible}
         setModalVisibility={props.setModalVisibility}
       />
-
-      <Navigation setModalVisibility={props.setModalVisibility} />
+      <SafeAreaView>
+        <Navigation setModalVisibility={props.setModalVisibility} />
+      </SafeAreaView>
       <HeroSection />
 
       <View style={styles.paymentContainer}>

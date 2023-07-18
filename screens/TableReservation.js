@@ -15,6 +15,7 @@ import Colors from "../constants/Colors";
 import { useState } from "react";
 // import { Calendar } from "react-native-calendars";
 import Datetimepicker from "@react-native-community/datetimepicker";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const TableReservation = function (props) {
   const [isDateModal, setIsDateModal] = useState(false);
@@ -48,8 +49,9 @@ const TableReservation = function (props) {
           }}
         />
       </Modal>
-
-      <Navigation setModalVisibility={props.setModalVisibility} />
+      <SafeAreaView>
+        <Navigation setModalVisibility={props.setModalVisibility} />
+      </SafeAreaView>
       <HeroSection />
       <ScrollView>
         <KeyboardAvoidingView behavior="position">

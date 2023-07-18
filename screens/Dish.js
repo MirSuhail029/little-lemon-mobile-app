@@ -14,6 +14,7 @@ import lemonDessert from "../assets/lemon-dessert.jpg";
 import Colors from "../constants/Colors";
 import BurgerMenuModal from "../components/BurgerMenuModal";
 import Navigation from "../components/Navigation";
+import { SafeAreaView } from "react-native-safe-area-context";
 const Dish = function (props) {
   return (
     <>
@@ -21,7 +22,10 @@ const Dish = function (props) {
         modalVisibility={props.isModalVisible}
         setModalVisibility={props.setModalVisibility}
       />
-      <Navigation setModalVisibility={props.setModalVisibility} />
+
+      <SafeAreaView>
+        <Navigation setModalVisibility={props.setModalVisibility} />
+      </SafeAreaView>
       <View style={styles.rootContainer}>
         <View style={styles.contentContainer}>
           <View style={styles.imageContainer}>

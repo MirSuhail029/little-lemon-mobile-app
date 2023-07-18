@@ -4,6 +4,7 @@ import Navigation from "../components/Navigation";
 import HeroSection from "../components/HeroSection";
 import LoginModule from "../components/LoginModule";
 import { KeyboardAvoidingView, ScrollView } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Login = function (props) {
   return (
@@ -12,7 +13,9 @@ const Login = function (props) {
         modalVisibility={props.isModalVisible}
         setModalVisibility={props.setModalVisibility}
       />
-      <Navigation setModalVisibility={props.setModalVisibility} />
+      <SafeAreaView>
+        <Navigation setModalVisibility={props.setModalVisibility} />
+      </SafeAreaView>
       <HeroSection heroMessageImageVisible />
       <ScrollView>
         <KeyboardAvoidingView>

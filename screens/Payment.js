@@ -4,6 +4,7 @@ import Navigation from "../components/Navigation";
 import { StyleSheet, View, Text, Pressable } from "react-native";
 import Colors from "../constants/Colors";
 import { useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const RadioButton = function (props) {
   const [isButtonSelected, setIsButtonSelected] = useState(false);
@@ -33,8 +34,9 @@ const Payment = function (props) {
         modalVisibility={props.isModalVisible}
         setModalVisibility={props.setModalVisibility}
       />
-
-      <Navigation setModalVisibility={props.setModalVisibility} />
+      <SafeAreaView>
+        <Navigation setModalVisibility={props.setModalVisibility} />
+      </SafeAreaView>
       <HeroSection />
       <View style={styles.paymentContainer}>
         <Text style={styles.containerHeading}>Make Payment</Text>

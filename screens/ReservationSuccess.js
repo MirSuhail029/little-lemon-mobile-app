@@ -3,6 +3,7 @@ import HeroSection from "../components/HeroSection";
 import Navigation from "../components/Navigation";
 import { StyleSheet, View, Text, Pressable } from "react-native";
 import Colors from "../constants/Colors";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const ReservationSuccess = function (props) {
   return (
@@ -11,8 +12,9 @@ const ReservationSuccess = function (props) {
         modalVisibility={props.isModalVisible}
         setModalVisibility={props.setModalVisibility}
       />
-
-      <Navigation setModalVisibility={props.setModalVisibility} />
+      <SafeAreaView>
+        <Navigation setModalVisibility={props.setModalVisibility} />
+      </SafeAreaView>
       <HeroSection heroMessageImageVisible={true} />
       <View style={styles.reservationSuccessContainer}>
         <Text style={styles.successMessage}>Reservation Successful !!!</Text>
