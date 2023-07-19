@@ -24,39 +24,39 @@ const OrderSection = function (props) {
   ];
   const menuArrayData = [
     [
+      greekSalad,
       "Greek Salad",
       "The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.",
       "$12.99",
       { category: "lunch" },
-      greekSalad,
     ],
     [
+      brushetta,
       "Brushetta",
       "Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil. Toppings of tomato, veggies, beans, cured pork, or cheese are examples of variations. In Italy, a brustolina grill is frequently used to create bruschetta.",
       "$7.99",
       { category: "lunch" },
-      brushetta,
     ],
     [
+      grilledFish,
       "Grilled Fish",
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed cursus.",
       "$20.00",
       { category: "mains" },
-      grilledFish,
     ],
     [
+      pasta,
       "Pasta",
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet nec in ornare.",
       "$18.99",
       { category: "lunch" },
-      pasta,
     ],
     [
+      lemonDessert,
       "Lemon Dessert",
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio enim vitae.",
       "$6.99",
       { category: "dessert" },
-      lemonDessert,
     ],
   ];
   const [menuArray, setMenuArray] = useState(menuArrayData);
@@ -70,14 +70,12 @@ const OrderSection = function (props) {
           {filterDataArray.map((arrayItem, index) => {
             return (
               <View key={index}>
-                <Text
-                  style={styles.filterText}
+                <Pressable
+                  style={styles.filterTextPressable}
                   onPress={() => {
-                    setMenuArray(menuArrayData);
-                    // console.log(arrayItem);
                     setMenuArray(
                       menuArray.filter((item) => {
-                        return item[3].category === arrayItem.toLowerCase();
+                        return item[4].category === arrayItem.toLowerCase();
                       })
                     );
                     menuArray.length === 0
@@ -85,8 +83,8 @@ const OrderSection = function (props) {
                       : setIsNoFilterResult(false);
                   }}
                 >
-                  {arrayItem}
-                </Text>
+                  <Text style={styles.filterText}>{arrayItem}</Text>
+                </Pressable>
               </View>
             );
           })}
@@ -102,12 +100,12 @@ const OrderSection = function (props) {
         <ScrollView>
           {true &&
             menuArray.map((item, index) => {
-              const [menuItem, description, price, none, image] = item;
+              const [image, menuItem, description, price, none] = item;
               return (
                 <Pressable
                   key={index}
                   onPress={() => {
-                    props.navigation.navigate("Dish");
+                    props.navigation.navigate("Dish", { dishInfo: item });
                   }}
                 >
                   <View style={styles.menuItemContainer}>
@@ -147,19 +145,21 @@ const styles = StyleSheet.create({
     marginTop: 8,
     marginBottom: 5,
   },
-  filterText: {
+  filterTextPressable: {
     backgroundColor: Colors.lightGray,
     width: 70,
     height: 30,
     borderRadius: 8,
+    elevation: 2,
+    marginRight: 15,
+  },
+  filterText: {
     textAlign: "center",
     lineHeight: 30,
     fontWeight: "bold",
     color: Colors.primaryGray,
-    elevation: 1,
   },
   menuItemContainer: {
-    // backgroundColor: "pink",
     flexDirection: "row",
   },
   innerContainer: {

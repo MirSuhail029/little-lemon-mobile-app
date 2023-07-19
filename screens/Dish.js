@@ -1,21 +1,12 @@
-import {
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  Image,
-  Pressable,
-} from "react-native";
-import greekSalad from "../assets/greek-salad.jpg";
-import brushetta from "../assets/brushetta.jpg";
-import grilledFish from "../assets/grilled-fish.jpg";
-import pasta from "../assets/pasta.jpg";
-import lemonDessert from "../assets/lemon-dessert.jpg";
+import { StyleSheet, View, Text, Image, Pressable } from "react-native";
 import Colors from "../constants/Colors";
 import BurgerMenuModal from "../components/BurgerMenuModal";
 import Navigation from "../components/Navigation";
 import { SafeAreaView } from "react-native-safe-area-context";
+
 const Dish = function (props) {
+  const { dishInfo } = props.route.params;
+  const [image, dishName, description, price, ...rest] = dishInfo;
   return (
     <>
       <BurgerMenuModal
@@ -29,18 +20,11 @@ const Dish = function (props) {
       <View style={styles.rootContainer}>
         <View style={styles.contentContainer}>
           <View style={styles.imageContainer}>
-            <Image
-              source={require("../assets/greek-salad.jpg")}
-              style={styles.image}
-            />
+            <Image source={image} style={styles.image} />
           </View>
-          <Text style={styles.dishName}>Greek Salad</Text>
-          <Text style={styles.description}>
-            The famous greek salad of crispy lettuce, peppers, olives and our
-            Chicago style feta cheese, garnished with crunchy garlic and
-            rosemary croutons.
-          </Text>
-          <Text style={styles.price}>$12.99</Text>
+          <Text style={styles.dishName}>{dishName}</Text>
+          <Text style={styles.description}>{description}</Text>
+          <Text style={styles.price}>{price}</Text>
           <View style={styles.controls}>
             <View style={styles.control}>
               <Pressable android_ripple={{ color: Colors.rippleDark }}>
@@ -70,8 +54,6 @@ const styles = StyleSheet.create({
   rootContainer: {
     justifyContent: "center",
     alignItems: "center",
-    // paddingVertical: 50,
-    // backgroundColor: "green",
   },
   contentContainer: {
     width: "80%",
@@ -97,7 +79,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   description: {
-    fontSize: 18,
+    fontSize: 16,
     marginTop: 20,
   },
   price: {
@@ -109,7 +91,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     width: "100%",
     justifyContent: "center",
-    marginTop: 60,
+    marginTop: 40,
   },
   control: {
     marginHorizontal: 10,

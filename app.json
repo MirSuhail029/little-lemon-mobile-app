@@ -7,7 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/little-lemon-logo.png",
+      "image": "./assets/icons8-splash-96.png",
       "resizeMode": "contain",
       "backgroundColor": "lightgray"
     },
