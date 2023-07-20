@@ -19,21 +19,21 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 const TableReservation = function (props) {
   const [isDateModal, setIsDateModal] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date().now);
+  const [selectedDate, setSelectedDate] = useState();
   const [isTimeVisible, setIsTimeVisible] = useState(false);
-  const [selectedTime, setSelectedTime] = useState(new Date());
+  const [selectedTime, setSelectedTime] = useState(new Date(Date.now()));
   const [isPersonsVisible, setIsPersonsVisible] = useState(false);
   const [noOfPersons, setNoOfPersons] = useState(1);
   const [customerName, setCustomerName] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
   const [reservationInfo, setReservationInfo] = useState([]);
-
-  console.log(new Date().toLocaleString());
+  // console.log(selectedDate, selectedTime);
   return (
     <>
       <BurgerMenuModal
-        modalVisibility={props.isModalVisible}
+        isModalVisible={props.isModalVisible}
         setModalVisibility={props.setModalVisibility}
+        navigate={props.navigation.navigate}
       />
       <Modal visible={isDateModal} animationType="slide">
         {/* <Calendar
@@ -44,8 +44,13 @@ const TableReservation = function (props) {
         /> */}
         <Datetimepicker
           value={new Date(Date.now())}
-          onChange={() => {
+          onChange={(event, chosenDate) => {
             setIsDateModal(!isDateModal);
+            setSelectedDate(
+              `${chosenDate.getDate()}/${
+                chosenDate.getMonth() + 1
+              }/${chosenDate.getFullYear()}`
+            );
           }}
         />
       </Modal>

@@ -31,8 +31,9 @@ const Payment = function (props) {
   return (
     <>
       <BurgerMenuModal
-        modalVisibility={props.isModalVisible}
+        isModalVisible={props.isModalVisible}
         setModalVisibility={props.setModalVisibility}
+        navigate={props.navigation.navigate}
       />
       <SafeAreaView>
         <Navigation setModalVisibility={props.setModalVisibility} />

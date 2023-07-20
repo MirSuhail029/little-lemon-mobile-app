@@ -7,9 +7,9 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/icons8-splash-96.png",
-      "resizeMode": "contain",
-      "backgroundColor": "lightgray"
+      "image": "./assets/splash-new.png",
+      "resizeMode": "native",
+      "backgroundColor": "white"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {

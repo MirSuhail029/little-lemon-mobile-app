@@ -1,4 +1,11 @@
-import { StyleSheet, View, Text, Image, Pressable } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  Pressable,
+  ScrollView,
+} from "react-native";
 import Colors from "../constants/Colors";
 import BurgerMenuModal from "../components/BurgerMenuModal";
 import Navigation from "../components/Navigation";
@@ -10,41 +17,45 @@ const Dish = function (props) {
   return (
     <>
       <BurgerMenuModal
-        modalVisibility={props.isModalVisible}
+        isModalVisible={props.isModalVisible}
         setModalVisibility={props.setModalVisibility}
+        navigate={props.navigation.navigate}
       />
 
       <SafeAreaView>
         <Navigation setModalVisibility={props.setModalVisibility} />
       </SafeAreaView>
-      <View style={styles.rootContainer}>
-        <View style={styles.contentContainer}>
-          <View style={styles.imageContainer}>
-            <Image source={image} style={styles.image} />
-          </View>
-          <Text style={styles.dishName}>{dishName}</Text>
-          <Text style={styles.description}>{description}</Text>
-          <Text style={styles.price}>{price}</Text>
-          <View style={styles.controls}>
-            <View style={styles.control}>
-              <Pressable android_ripple={{ color: Colors.rippleDark }}>
-                <Text style={styles.controlText}>Buy</Text>
-              </Pressable>
+      <ScrollView>
+        <View style={styles.rootContainer}>
+          <View style={styles.contentContainer}>
+            <View style={styles.imageContainer}>
+              <Image source={image} style={styles.image} />
             </View>
-            <View>
-              <Pressable
-                style={styles.control}
-                android_ripple={{ color: Colors.rippleDark }}
-                onPress={() => {
-                  props.navigation.navigate("Home");
-                }}
-              >
-                <Text style={styles.controlText}>Back</Text>
-              </Pressable>
+            <Text style={styles.dishName}>{dishName}</Text>
+
+            <Text style={styles.description}>{description}</Text>
+            <Text style={styles.price}>{price}</Text>
+            <View style={styles.controls}>
+              <View style={styles.control}>
+                <Pressable android_ripple={{ color: Colors.rippleDark }}>
+                  <Text style={styles.controlText}>Buy</Text>
+                </Pressable>
+              </View>
+              <View>
+                <Pressable
+                  style={styles.control}
+                  android_ripple={{ color: Colors.rippleDark }}
+                  onPress={() => {
+                    props.navigation.navigate("Home");
+                  }}
+                >
+                  <Text style={styles.controlText}>Back</Text>
+                </Pressable>
+              </View>
             </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
     </>
   );
 };
@@ -57,7 +68,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     width: "80%",
-    marginVertical: 50,
+    marginVertical: 30,
   },
   imageContainer: {
     shadowColor: "#000",
@@ -72,7 +83,7 @@ const styles = StyleSheet.create({
     height: 250,
   },
   dishName: {
-    fontSize: 25,
+    fontSize: 23,
     fontWeight: "bold",
     marginTop: 20,
     backgroundColor: Colors.primaryYellow,
@@ -83,7 +94,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   price: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: "bold",
     marginTop: 20,
   },

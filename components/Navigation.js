@@ -4,6 +4,7 @@ import logoIcon from "../assets/little-lemon-logo.png";
 import cartIcon from "../assets/cart-logo.png";
 
 const Navigation = function (props) {
+  // console.log(props.setModalVisibility);
   return (
     <View style={styles.navigation}>
       <Pressable onPress={props.setModalVisibility}>
@@ -14,7 +15,12 @@ const Navigation = function (props) {
       </Pressable>
       <Image
         source={logoIcon}
-        style={{ marginTop: "auto", marginBottom: "auto" }}
+        style={{
+          marginTop: "auto",
+          marginBottom: "auto",
+          height: 40,
+          width: 150,
+        }}
       />
       <Image
         source={cartIcon}

@@ -2,9 +2,10 @@ import { StyleSheet, View, Text, Modal, Pressable } from "react-native";
 import Colors from "../constants/Colors";
 
 const BurgerMenuModal = function (props) {
+  // console.log(props);
   return (
     <Modal
-      visible={false}
+      visible={props.isModalVisible}
       animationType="slide"
       // transparent={true}
     >
@@ -26,13 +27,28 @@ const BurgerMenuModal = function (props) {
             </Text>
           </Pressable>
           <View style={styles.modalOptionsContainer}>
-            <Pressable>
+            <Pressable
+              onPress={() => {
+                props.navigate("Home");
+                props.setModalVisibility();
+              }}
+            >
               <Text style={styles.burgerMenuText}>Home</Text>
             </Pressable>
-            <Pressable>
+            <Pressable
+              onPress={() => {
+                props.navigate("TableReservation");
+                props.setModalVisibility();
+              }}
+            >
               <Text style={styles.burgerMenuText}>Reservation</Text>
             </Pressable>
-            <Pressable>
+            <Pressable
+              onPress={() => {
+                props.navigate("Login");
+                props.setModalVisibility();
+              }}
+            >
               <Text style={styles.burgerMenuText}>Registration</Text>
             </Pressable>
             <Pressable>

@@ -26,42 +26,108 @@ export default function App() {
           initialRouteName="Home"
           screenOptions={{ headerStyle: { backgroundColor: "green" } }}
         >
-          <stack.Screen
-            name="Home"
-            component={Home}
-            options={{ headerShown: false }}
-          />
+          <stack.Screen name="Home" options={{ headerShown: false }}>
+            {(props) => {
+              return (
+                <Home
+                  {...props}
+                  isModalVisible={isModalVisible}
+                  setModalVisibility={setModalVisibility}
+                />
+              );
+            }}
+          </stack.Screen>
           <stack.Screen
             name="Login"
-            component={Login}
+            // component={Login}
             options={{ headerShown: false }}
             // handleClick={}
-          />
+          >
+            {(props) => {
+              return (
+                <Login
+                  {...props}
+                  isModalVisible={isModalVisible}
+                  setModalVisibility={setModalVisibility}
+                />
+              );
+            }}
+          </stack.Screen>
           <stack.Screen
             name="CardPayment"
-            component={CardPayment}
+            // component={CardPayment}
             options={{ headerShown: false }}
-          />
+          >
+            {(props) => {
+              return (
+                <CardPayment
+                  {...props}
+                  isModalVisible={isModalVisible}
+                  setModalVisibility={setModalVisibility}
+                />
+              );
+            }}
+          </stack.Screen>
           <stack.Screen
             name="Payment"
-            component={Payment}
+            // component={Payment}
             options={{ headerShown: false }}
-          />
+          >
+            {(props) => {
+              return (
+                <Payment
+                  {...props}
+                  isModalVisible={isModalVisible}
+                  setModalVisibility={setModalVisibility}
+                />
+              );
+            }}
+          </stack.Screen>
           <stack.Screen
             name="ReservationSuccess"
-            component={ReservationSuccess}
+            // component={ReservationSuccess}
             options={{ headerShown: false }}
-          />
+          >
+            {(props) => {
+              return (
+                <ReservationSuccess
+                  {...props}
+                  isModalVisible={isModalVisible}
+                  setModalVisibility={setModalVisibility}
+                />
+              );
+            }}
+          </stack.Screen>
           <stack.Screen
             name="TableReservation"
-            component={TableReservation}
+            // component={TableReservation}
             options={{ headerShown: false }}
-          />
+          >
+            {(props) => {
+              return (
+                <TableReservation
+                  {...props}
+                  isModalVisible={isModalVisible}
+                  setModalVisibility={setModalVisibility}
+                />
+              );
+            }}
+          </stack.Screen>
           <stack.Screen
             name="Dish"
-            component={Dish}
+            // component={Dish}
             options={{ headerShown: false }}
-          />
+          >
+            {(props) => {
+              return (
+                <Dish
+                  {...props}
+                  isModalVisible={isModalVisible}
+                  setModalVisibility={setModalVisibility}
+                />
+              );
+            }}
+          </stack.Screen>
         </stack.Navigator>
       </NavigationContainer>
     </>

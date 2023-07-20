@@ -56,7 +56,7 @@ const OrderSection = function (props) {
       "Lemon Dessert",
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio enim vitae.",
       "$6.99",
-      { category: "dessert" },
+      { category: "desserts" },
     ],
   ];
   const [menuArray, setMenuArray] = useState(menuArrayData);

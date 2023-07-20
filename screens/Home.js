@@ -4,11 +4,13 @@ import OrderSection from "../components/OrderSection";
 import BurgerMenuModal from "../components/BurgerMenuModal";
 import { SafeAreaView } from "react-native-safe-area-context";
 const Home = function (props) {
+  // console.log("hey");
   return (
     <>
       <BurgerMenuModal
-        modalVisibility={props.isModalVisible}
+        isModalVisible={props.isModalVisible}
         setModalVisibility={props.setModalVisibility}
+        navigate={props.navigation.navigate}
       />
       <SafeAreaView>
         <Navigation setModalVisibility={props.setModalVisibility} />
