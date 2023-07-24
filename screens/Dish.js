@@ -40,35 +40,42 @@ const Dish = function (props) {
               <Text style={styles.deliveryTime}> 20 Minutes</Text>
             </View>
             <View style={styles.quantityContainer}>
-              <Pressable
-                style={styles.quantityMinus}
-                onPress={() => {
-                  if (quantity > 1) {
-                    setQuantity(quantity - 1);
-                  }
-                }}
-              >
-                <Text style={styles.quantityText}>-</Text>
-              </Pressable>
+              <View style={styles.incrementDecrementContainer}>
+                <Pressable
+                  android_ripple={{ color: Colors.rippleDark }}
+                  style={styles.quantityMinus}
+                  onPress={() => {
+                    if (quantity > 1) {
+                      setQuantity(quantity - 1);
+                    }
+                  }}
+                >
+                  <Text style={styles.quantityText}>-</Text>
+                </Pressable>
+              </View>
               <Text style={styles.quantityText}>{quantity}</Text>
-              <Pressable
-                style={styles.quantityPlus}
-                onPress={() => {
-                  if (quantity < 9) {
-                    setQuantity(quantity + 1);
-                  }
-                }}
-              >
-                <Text style={styles.quantityText}>+</Text>
-              </Pressable>
+              <View style={styles.incrementDecrementContainer}>
+                <Pressable
+                  android_ripple={{ color: Colors.rippleDark }}
+                  style={styles.quantityPlus}
+                  onPress={() => {
+                    if (quantity < 9) {
+                      setQuantity(quantity + 1);
+                    }
+                  }}
+                >
+                  <Text style={styles.quantityText}>+</Text>
+                </Pressable>
+              </View>
             </View>
-            {/* <View style={styles.controls}> */}
             <View style={styles.control}>
               <Pressable android_ripple={{ color: Colors.rippleDark }}>
-                <Text style={styles.controlText}>Add for {price}</Text>
+                <Text style={styles.controlText}>
+                  Add for $
+                  {(parseFloat(price) * parseFloat(quantity)).toFixed(2)}
+                </Text>
               </Pressable>
             </View>
-            {/* </View> */}
           </View>
         </View>
       </ScrollView>
@@ -104,8 +111,6 @@ const styles = StyleSheet.create({
     fontSize: 23,
     fontWeight: "bold",
     marginTop: 0,
-    // backgroundColor: Colors.primaryYellow,
-    // textAlign: "center",
   },
   description: {
     fontSize: 14,
@@ -140,10 +145,28 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
   },
-  quantityMinus: { marginRight: 30 },
-  quantityPlus: { marginLeft: 30 },
+  incrementDecrementContainer: {
+    marginHorizontal: 20,
+    overflow: "hidden",
+    borderRadius: 20,
+  },
+  quantityMinus: {
+    backgroundColor: Colors.lightGray,
+    width: 40,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  quantityPlus: {
+    backgroundColor: Colors.lightGray,
+    width: 40,
+    borderRadius: 20,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   quantityText: {
     fontSize: 30,
     fontWeight: "bold",
+    lineHeight: 40,
   },
 });

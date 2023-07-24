@@ -27,41 +27,39 @@ const OrderSection = function (props) {
       greekSalad,
       "Greek Salad",
       "The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.",
-      "$12.99",
+      "12.99",
       { category: "lunch" },
     ],
     [
       brushetta,
       "Brushetta",
       "Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil. Toppings of tomato, veggies, beans, cured pork, or cheese are examples of variations. In Italy, a brustolina grill is frequently used to create bruschetta.",
-      "$7.99",
+      "7.99",
       { category: "lunch" },
     ],
     [
       grilledFish,
       "Grilled Fish",
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed cursus.",
-      "$20.00",
+      "20.00",
       { category: "mains" },
     ],
     [
       pasta,
       "Pasta",
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet nec in ornare.",
-      "$18.99",
+      "18.99",
       { category: "lunch" },
     ],
     [
       lemonDessert,
       "Lemon Dessert",
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio enim vitae.",
-      "$6.99",
+      "6.99",
       { category: "desserts" },
     ],
   ];
   const [menuArray, setMenuArray] = useState(menuArrayData);
-  const [isNoFilterResult, setIsNoFilterResult] = useState(false);
-
   return (
     <>
       <View style={styles.menuFilterContainer}>
@@ -74,13 +72,10 @@ const OrderSection = function (props) {
                   style={styles.filterTextPressable}
                   onPress={() => {
                     setMenuArray(
-                      menuArray.filter((item) => {
+                      menuArrayData.filter((item) => {
                         return item[4].category === arrayItem.toLowerCase();
                       })
                     );
-                    menuArray.length === 0
-                      ? setIsNoFilterResult(true)
-                      : setIsNoFilterResult(false);
                   }}
                 >
                   <Text style={styles.filterText}>{arrayItem}</Text>
@@ -92,13 +87,13 @@ const OrderSection = function (props) {
       </View>
 
       <ScrollView style={{ paddingHorizontal: 10 }}>
-        {isNoFilterResult && (
+        {menuArray.length === 0 && (
           <View style={styles.filterContainer}>
             <Text style={styles.noMatchStyle}>No match found!</Text>
           </View>
         )}
         <ScrollView>
-          {true &&
+          {menuArray.length > 0 &&
             menuArray.map((item, index) => {
               const [image, menuItem, description, price, none] = item;
               return (
