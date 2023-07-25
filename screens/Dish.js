@@ -127,13 +127,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
   },
-  control: {
-    borderRadius: 15,
-    width: "100%",
-    backgroundColor: Colors.primaryYellow,
-    marginTop: 20,
-    overflow: "hidden",
-  },
+
   controlText: {
     color: Colors.primaryBlack,
     textAlign: "center",
@@ -144,6 +138,7 @@ const styles = StyleSheet.create({
   quantityContainer: {
     flexDirection: "row",
     justifyContent: "center",
+    marginVertical: 30,
   },
   incrementDecrementContainer: {
     marginHorizontal: 20,
@@ -168,5 +163,11 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: "bold",
     lineHeight: 40,
+  },
+  control: {
+    borderRadius: 15,
+    width: "100%",
+    backgroundColor: Colors.primaryYellow,
+    overflow: "hidden",
   },
 });

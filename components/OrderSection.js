@@ -11,11 +11,20 @@ import brushetta from "../assets/brushetta.jpg";
 import grilledFish from "../assets/grilled-fish.jpg";
 import pasta from "../assets/pasta.jpg";
 import lemonDessert from "../assets/lemon-dessert.jpg";
+import steak from "../assets/steak.jpg";
+import grilledChicken from "../assets/grilled-chicken.jpg";
+import hotDog from "../assets/hot-dog.jpg";
+import cheeseBurger from "../assets/cheese-burger.jpg";
+import brisket from "../assets/brisket.jpg";
+import friedRice from "../assets/fried-rice.jpg";
+import chickenBiryani from "../assets/chicken-biryani.jpg";
+import shwarma from "../assets/shwarma.jpg";
 import Colors from "../constants/Colors";
 import { useState } from "react";
 
 const OrderSection = function (props) {
   const filterDataArray = [
+    "All",
     "Lunch",
     "Mains",
     "Desserts",
@@ -58,22 +67,85 @@ const OrderSection = function (props) {
       "6.99",
       { category: "desserts" },
     ],
+    [
+      steak,
+      "Steak",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio enim vitae.",
+      "65.00",
+      { category: "a la carte" },
+    ],
+    [
+      grilledChicken,
+      "Grilled Chicken",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio enim vitae.",
+      "35.00",
+      { category: "a la carte" },
+    ],
+    [
+      hotDog,
+      "Hot Dog",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio enim vitae.",
+      "5.50",
+      { category: "breakfast" },
+    ],
+    [
+      cheeseBurger,
+      "Cheese Burger",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio enim vitae.",
+      "9.99",
+      { category: "breakfast" },
+    ],
+    [
+      brisket,
+      "Beef Brisket",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio enim vitae.",
+      "50.00",
+      { category: "a la carte" },
+    ],
+    [
+      friedRice,
+      "Fried Rice",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio enim vitae.",
+      "15.00",
+      { category: "special" },
+    ],
+    [
+      chickenBiryani,
+      "Chicken Biryani",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio enim vitae.",
+      "20.00",
+      { category: "special" },
+    ],
+    [
+      shwarma,
+      "Shwarma",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio enim vitae.",
+      "8.00",
+      { category: "special" },
+    ],
   ];
   const [menuArray, setMenuArray] = useState(menuArrayData);
   return (
     <>
       <View style={styles.menuFilterContainer}>
         <Text style={styles.menuFilterHeading}>Order For Delivery!</Text>
-        <View style={styles.menuFilter}>
+        <ScrollView
+          style={styles.menuFilter}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+        >
           {filterDataArray.map((arrayItem, index) => {
             return (
-              <View key={index}>
+              <View key={index} style={styles.filterPressableContainer}>
                 <Pressable
+                  android_ripple={{ color: Colors.rippleDark }}
                   style={styles.filterTextPressable}
                   onPress={() => {
                     setMenuArray(
                       menuArrayData.filter((item) => {
-                        return item[4].category === arrayItem.toLowerCase();
+                        return arrayItem.toLowerCase() !== "all"
+                          ? item[4].category === arrayItem.toLowerCase()
+                          : item[4].category !== true;
                       })
                     );
                   }}
@@ -83,7 +155,7 @@ const OrderSection = function (props) {
               </View>
             );
           })}
-        </View>
+        </ScrollView>
       </View>
 
       <ScrollView style={{ paddingHorizontal: 10 }}>
@@ -109,7 +181,7 @@ const OrderSection = function (props) {
                       <Text style={styles.menuItemDescription}>
                         {description}
                       </Text>
-                      <Text style={styles.menuItemPrice}>{price}</Text>
+                      <Text style={styles.menuItemPrice}>${price}</Text>
                     </View>
                     <Image source={image} style={styles.menuItemImage} />
                   </View>
@@ -134,19 +206,19 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   menuFilter: {
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-between",
     marginTop: 8,
-    marginBottom: 5,
+  },
+  filterPressableContainer: {
+    borderRadius: 8,
+    overflow: "hidden",
+    marginRight: 15,
   },
   filterTextPressable: {
+    borderRadius: 8,
     backgroundColor: Colors.lightGray,
     width: 70,
     height: 30,
-    borderRadius: 8,
     elevation: 2,
-    marginRight: 15,
   },
   filterText: {
     textAlign: "center",
@@ -156,11 +228,11 @@ const styles = StyleSheet.create({
   },
   menuItemContainer: {
     flexDirection: "row",
+    borderTopWidth: 1,
+    borderTopColor: Colors.darkGray,
   },
   innerContainer: {
     width: "80%",
-    borderTopWidth: 1,
-    borderTopColor: Colors.darkGray,
   },
   menuItemTitle: {
     fontSize: 14,
@@ -185,6 +257,7 @@ const styles = StyleSheet.create({
     height: 70,
     marginTop: "auto",
     marginBottom: "auto",
+    borderRadius: 8,
   },
   filterContainer: {
     height: 100,

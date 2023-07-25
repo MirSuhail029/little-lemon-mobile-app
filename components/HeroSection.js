@@ -68,8 +68,7 @@ const styles = StyleSheet.create({
   heroImage: {
     backgroundColor: Colors.primaryGray,
     borderRadius: 16,
-    flex: 2.5,
-    // width: 120,
+    flex: 3,
     height: 120,
   },
   heroButtonContainer: {

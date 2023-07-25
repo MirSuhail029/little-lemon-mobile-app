@@ -28,6 +28,8 @@ const BurgerMenuModal = function (props) {
           </Pressable>
           <View style={styles.modalOptionsContainer}>
             <Pressable
+              android_ripple={{ color: Colors.rippleDark }}
+              style={styles.modalLinks}
               onPress={() => {
                 props.navigate("Home");
                 props.setModalVisibility();
@@ -36,6 +38,8 @@ const BurgerMenuModal = function (props) {
               <Text style={styles.burgerMenuText}>Home</Text>
             </Pressable>
             <Pressable
+              android_ripple={{ color: Colors.rippleDark }}
+              style={styles.modalLinks}
               onPress={() => {
                 props.navigate("TableReservation");
                 props.setModalVisibility();
@@ -44,14 +48,19 @@ const BurgerMenuModal = function (props) {
               <Text style={styles.burgerMenuText}>Reservation</Text>
             </Pressable>
             <Pressable
+              android_ripple={{ color: Colors.rippleDark }}
+              style={styles.modalLinks}
               onPress={() => {
                 props.navigate("Login");
                 props.setModalVisibility();
               }}
             >
-              <Text style={styles.burgerMenuText}>Registration</Text>
+              <Text style={styles.burgerMenuText}>Login</Text>
             </Pressable>
-            <Pressable>
+            <Pressable
+              android_ripple={{ color: Colors.rippleDark }}
+              style={styles.modalLinks}
+            >
               <Text style={styles.burgerMenuText}>Contact</Text>
             </Pressable>
           </View>
@@ -65,7 +74,6 @@ export default BurgerMenuModal;
 const styles = StyleSheet.create({
   burgerMenuModalContainer: {
     width: "100%",
-    padding: 20,
   },
   burgerMenuModal: {
     // backgroundColor: "green",
@@ -73,6 +81,11 @@ const styles = StyleSheet.create({
   modalOptionsContainer: {
     height: 300,
     justifyContent: "space-around",
+  },
+  modalLinks: {
+    height: 50,
+    justifyContent: "center",
+    paddingHorizontal: 20,
   },
   burgerMenuText: {
     fontSize: 20,
