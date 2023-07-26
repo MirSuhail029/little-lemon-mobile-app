@@ -69,7 +69,12 @@ const Dish = function (props) {
               </View>
             </View>
             <View style={styles.control}>
-              <Pressable android_ripple={{ color: Colors.rippleDark }}>
+              <Pressable
+                android_ripple={{ color: Colors.rippleDark }}
+                onPress={() => {
+                  props.navigation.navigate("Cart");
+                }}
+              >
                 <Text style={styles.controlText}>
                   Add for $
                   {(parseFloat(price) * parseFloat(quantity)).toFixed(2)}

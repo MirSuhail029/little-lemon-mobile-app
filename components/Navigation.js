@@ -2,6 +2,7 @@ import { StyleSheet, View, Image, Pressable } from "react-native";
 import burgerIcon from "../assets/burger-menu.png";
 import logoIcon from "../assets/little-lemon-logo.png";
 import cartIcon from "../assets/cart-logo.png";
+// import Ionicons from "vector-icons/Ionicons";
 
 const Navigation = function (props) {
   // console.log(props.setModalVisibility);

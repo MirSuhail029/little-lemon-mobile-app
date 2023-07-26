@@ -9,6 +9,7 @@ import ReservationSuccess from "./screens/ReservationSuccess";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Dish from "./screens/Dish";
+import Cart from "./screens/Cart";
 
 // import greekSalad from "./assets/greek-salad.jpg";
 const stack = createNativeStackNavigator();
@@ -23,7 +24,7 @@ export default function App() {
       <StatusBar style="dark" />
       <NavigationContainer>
         <stack.Navigator
-          initialRouteName="Home"
+          initialRouteName="Cart"
           screenOptions={{ headerStyle: { backgroundColor: "green" } }}
         >
           <stack.Screen name="Home" options={{ headerShown: false }}>
@@ -121,6 +122,17 @@ export default function App() {
             {(props) => {
               return (
                 <Dish
+                  {...props}
+                  isModalVisible={isModalVisible}
+                  setModalVisibility={setModalVisibility}
+                />
+              );
+            }}
+          </stack.Screen>
+          <stack.Screen name="Cart" options={{ headerShown: false }}>
+            {(props) => {
+              return (
+                <Cart
                   {...props}
                   isModalVisible={isModalVisible}
                   setModalVisibility={setModalVisibility}

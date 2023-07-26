@@ -199,22 +199,24 @@ const styles = StyleSheet.create({
   menuFilterContainer: {
     paddingHorizontal: 15,
     justifyContent: "center",
-    height: 80,
   },
   menuFilterHeading: {
     fontSize: 18,
     fontWeight: "bold",
   },
-  menuFilter: {
-    marginTop: 8,
-  },
+  // menuFilter: {
+  //   // marginTop: 8,
+  // },
   filterPressableContainer: {
     borderRadius: 8,
     overflow: "hidden",
     marginRight: 15,
+    backgroundColor: "green",
+    marginBottom: 20,
+    marginTop: 10,
   },
   filterTextPressable: {
-    borderRadius: 8,
+    // borderRadius: 8,
     backgroundColor: Colors.lightGray,
     width: 70,
     height: 30,
