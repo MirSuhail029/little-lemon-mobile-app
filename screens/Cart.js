@@ -12,9 +12,11 @@ import BurgerMenuModal from "../components/BurgerMenuModal";
 import { useState } from "react";
 import Colors from "../constants/Colors";
 import deliveryVan from "../assets/van.png";
+import OrderSection from "../components/OrderSection";
+import AllMenu from "../components/AllMenu";
 
 const Cart = function (props) {
-  const [isRadioPressed, setIsRadioPressed] = useState(false);
+  const [isRadioPressed, setIsRadioPressed] = useState(true);
   return (
     <>
       <BurgerMenuModal
@@ -65,7 +67,14 @@ const Cart = function (props) {
               </View>
             </View>
           </View>
-          <ScrollView style={styles.menu}></ScrollView>
+          <View style={styles.menu}>
+            <View style={styles.addMoreTitleContainer}>
+              <Text style={styles.addMore}>Add More To Your Order!</Text>
+            </View>
+            <ScrollView>
+              <AllMenu />
+            </ScrollView>
+          </View>
           <View></View>
           <View></View>
         </ScrollView>
@@ -182,10 +191,17 @@ const styles = StyleSheet.create({
   itemPriceContainer: {
     alignItems: "flex-end",
     flex: 5,
-    // backgroundColor: "green",
   },
   itemPrice: {
     fontSize: 18,
     fontWeight: 500,
+  },
+  addMoreTitleContainer: {
+    paddingVertical: 20,
+    // backgroundColor: "green",
+  },
+  addMore: {
+    fontSize: 19,
+    fontWeight: 800,
   },
 });
