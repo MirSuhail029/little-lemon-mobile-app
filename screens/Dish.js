@@ -29,66 +29,66 @@ const Dish = function (props) {
         navigate={props.navigation.navigate}
       />
 
-      <SafeAreaView>
+      <SafeAreaView style={{ flex: 1 }}>
         <Navigation setModalVisibility={props.setModalVisibility} />
+        <ScrollView>
+          <View style={styles.rootContainer}>
+            <View style={styles.imageContainer}>
+              <Image source={image} style={styles.image} />
+            </View>
+            <View style={styles.contentContainer}>
+              <Text style={styles.dishName}>{dishName}</Text>
+              <Text style={styles.description}>{description}</Text>
+              <View style={styles.delivery}>
+                <Text style={styles.deliveryText}>Delivery time :</Text>
+                <Text style={styles.deliveryTime}> 20 Minutes</Text>
+              </View>
+              <View style={styles.quantityContainer}>
+                <View style={styles.incrementDecrementContainer}>
+                  <Pressable
+                    android_ripple={{ color: Colors.rippleDark }}
+                    style={styles.quantityMinus}
+                    onPress={() => {
+                      if (quantity > 1) {
+                        setQuantity(quantity - 1);
+                      }
+                    }}
+                  >
+                    <Text style={styles.quantityText}>-</Text>
+                  </Pressable>
+                </View>
+                <Text style={styles.quantityText}>{quantity}</Text>
+                <View style={styles.incrementDecrementContainer}>
+                  <Pressable
+                    android_ripple={{ color: Colors.rippleDark }}
+                    style={styles.quantityPlus}
+                    onPress={() => {
+                      if (quantity < 9) {
+                        setQuantity(quantity + 1);
+                      }
+                    }}
+                  >
+                    <Text style={styles.quantityText}>+</Text>
+                  </Pressable>
+                </View>
+              </View>
+              <View style={styles.control}>
+                <Pressable
+                  android_ripple={{ color: Colors.rippleDark }}
+                  onPress={() => {
+                    props.navigation.navigate("Cart");
+                  }}
+                >
+                  <Text style={styles.controlText}>
+                    Add for $
+                    {(parseFloat(price) * parseFloat(quantity)).toFixed(2)}
+                  </Text>
+                </Pressable>
+              </View>
+            </View>
+          </View>
+        </ScrollView>
       </SafeAreaView>
-      <ScrollView>
-        <View style={styles.rootContainer}>
-          <View style={styles.imageContainer}>
-            <Image source={image} style={styles.image} />
-          </View>
-          <View style={styles.contentContainer}>
-            <Text style={styles.dishName}>{dishName}</Text>
-            <Text style={styles.description}>{description}</Text>
-            <View style={styles.delivery}>
-              <Text style={styles.deliveryText}>Delivery time :</Text>
-              <Text style={styles.deliveryTime}> 20 Minutes</Text>
-            </View>
-            <View style={styles.quantityContainer}>
-              <View style={styles.incrementDecrementContainer}>
-                <Pressable
-                  android_ripple={{ color: Colors.rippleDark }}
-                  style={styles.quantityMinus}
-                  onPress={() => {
-                    if (quantity > 1) {
-                      setQuantity(quantity - 1);
-                    }
-                  }}
-                >
-                  <Text style={styles.quantityText}>-</Text>
-                </Pressable>
-              </View>
-              <Text style={styles.quantityText}>{quantity}</Text>
-              <View style={styles.incrementDecrementContainer}>
-                <Pressable
-                  android_ripple={{ color: Colors.rippleDark }}
-                  style={styles.quantityPlus}
-                  onPress={() => {
-                    if (quantity < 9) {
-                      setQuantity(quantity + 1);
-                    }
-                  }}
-                >
-                  <Text style={styles.quantityText}>+</Text>
-                </Pressable>
-              </View>
-            </View>
-            <View style={styles.control}>
-              <Pressable
-                android_ripple={{ color: Colors.rippleDark }}
-                onPress={() => {
-                  props.navigation.navigate("Cart");
-                }}
-              >
-                <Text style={styles.controlText}>
-                  Add for $
-                  {(parseFloat(price) * parseFloat(quantity)).toFixed(2)}
-                </Text>
-              </Pressable>
-            </View>
-          </View>
-        </View>
-      </ScrollView>
     </>
   );
 };

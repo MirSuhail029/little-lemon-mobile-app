@@ -8,25 +8,18 @@ const Navigation = function (props) {
   // console.log(props.setModalVisibility);
   return (
     <View style={styles.navigation}>
-      <Pressable onPress={props.setModalVisibility}>
-        <Image
-          source={burgerIcon}
-          style={{ marginTop: "auto", marginBottom: "auto" }}
-        />
+      <Pressable
+        onPress={props.setModalVisibility}
+        style={styles.ThreeDotContainer}
+      >
+        <Image source={burgerIcon} style={styles.burgerIcon} />
       </Pressable>
-      <Image
-        source={logoIcon}
-        style={{
-          marginTop: "auto",
-          marginBottom: "auto",
-          height: 40,
-          width: 150,
-        }}
-      />
-      <Image
-        source={cartIcon}
-        style={{ marginTop: "auto", marginBottom: "auto" }}
-      />
+      <View style={styles.logoContainer}>
+        <Image source={logoIcon} style={styles.logoIcon} />
+      </View>
+      <Pressable style={styles.cartContainer}>
+        <Image source={cartIcon} style={styles.cartIcon} />
+      </Pressable>
     </View>
   );
 };
@@ -38,5 +31,41 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-around",
+  },
+  ThreeDotContainer: {
+    // backgroundColor: "green",
+    width: 60,
+    alignItems: "center",
+    flex: 2,
+  },
+  burgerIcon: {
+    marginTop: "auto",
+    marginBottom: "auto",
+    width: 28,
+    height: 20,
+  },
+  logoContainer: {
+    flex: 8,
+    // backgroundColor: "red",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  logoIcon: {
+    marginTop: "auto",
+    marginBottom: "auto",
+    height: 40,
+    width: 150,
+  },
+  cartContainer: {
+    flex: 2,
+    // backgroundColor: "pink",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  cartIcon: {
+    marginTop: "auto",
+    marginBottom: "auto",
+    height: 33,
+    width: 33,
   },
 });

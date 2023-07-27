@@ -11,7 +11,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Dish from "./screens/Dish";
 import Cart from "./screens/Cart";
 
-// import greekSalad from "./assets/greek-salad.jpg";
 const stack = createNativeStackNavigator();
 export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -24,7 +23,7 @@ export default function App() {
       <StatusBar style="dark" />
       <NavigationContainer>
         <stack.Navigator
-          initialRouteName="Cart"
+          initialRouteName="Home"
           screenOptions={{ headerStyle: { backgroundColor: "green" } }}
         >
           <stack.Screen name="Home" options={{ headerShown: false }}>
@@ -38,12 +37,7 @@ export default function App() {
               );
             }}
           </stack.Screen>
-          <stack.Screen
-            name="Login"
-            // component={Login}
-            options={{ headerShown: false }}
-            // handleClick={}
-          >
+          <stack.Screen name="Login" options={{ headerShown: false }}>
             {(props) => {
               return (
                 <Login
@@ -54,11 +48,7 @@ export default function App() {
               );
             }}
           </stack.Screen>
-          <stack.Screen
-            name="CardPayment"
-            // component={CardPayment}
-            options={{ headerShown: false }}
-          >
+          <stack.Screen name="CardPayment" options={{ headerShown: false }}>
             {(props) => {
               return (
                 <CardPayment
@@ -69,11 +59,7 @@ export default function App() {
               );
             }}
           </stack.Screen>
-          <stack.Screen
-            name="Payment"
-            // component={Payment}
-            options={{ headerShown: false }}
-          >
+          <stack.Screen name="Payment" options={{ headerShown: false }}>
             {(props) => {
               return (
                 <Payment
@@ -86,7 +72,6 @@ export default function App() {
           </stack.Screen>
           <stack.Screen
             name="ReservationSuccess"
-            // component={ReservationSuccess}
             options={{ headerShown: false }}
           >
             {(props) => {
@@ -101,7 +86,6 @@ export default function App() {
           </stack.Screen>
           <stack.Screen
             name="TableReservation"
-            // component={TableReservation}
             options={{ headerShown: false }}
           >
             {(props) => {
@@ -114,11 +98,7 @@ export default function App() {
               );
             }}
           </stack.Screen>
-          <stack.Screen
-            name="Dish"
-            // component={Dish}
-            options={{ headerShown: false }}
-          >
+          <stack.Screen name="Dish" options={{ headerShown: false }}>
             {(props) => {
               return (
                 <Dish

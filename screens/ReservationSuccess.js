@@ -13,31 +13,31 @@ const ReservationSuccess = function (props) {
         setModalVisibility={props.setModalVisibility}
         navigate={props.navigation.navigate}
       />
-      <SafeAreaView>
+      <SafeAreaView style={{ flex: 1 }}>
         <Navigation setModalVisibility={props.setModalVisibility} />
-      </SafeAreaView>
-      <HeroSection heroMessageImageVisible={true} />
-      <View style={styles.reservationSuccessContainer}>
-        <Text style={styles.successMessage}>Reservation Successful !!!</Text>
-        <View style={styles.controlsContainer}>
-          <Pressable
-            android_ripple={{ color: Colors.rippleDark }}
-            style={styles.buttonContainer}
-            onPress={() => {
-              props.navigation.navigate("Home");
-            }}
-          >
-            <Text style={styles.buttonLabel}>Home</Text>
-          </Pressable>
+        <HeroSection heroMessageImageVisible={true} />
+        <View style={styles.reservationSuccessContainer}>
+          <Text style={styles.successMessage}>Reservation Successful !!!</Text>
+          <View style={styles.controlsContainer}>
+            <Pressable
+              android_ripple={{ color: Colors.rippleDark }}
+              style={styles.buttonContainer}
+              onPress={() => {
+                props.navigation.navigate("Home");
+              }}
+            >
+              <Text style={styles.buttonLabel}>Home</Text>
+            </Pressable>
 
-          <Pressable
-            android_ripple={{ color: Colors.rippleDark }}
-            style={styles.buttonContainer}
-          >
-            <Text style={styles.buttonLabel}>Close</Text>
-          </Pressable>
+            <Pressable
+              android_ripple={{ color: Colors.rippleDark }}
+              style={styles.buttonContainer}
+            >
+              <Text style={styles.buttonLabel}>Close</Text>
+            </Pressable>
+          </View>
         </View>
-      </View>
+      </SafeAreaView>
     </>
   );
 };

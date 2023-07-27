@@ -35,60 +35,60 @@ const Payment = function (props) {
         setModalVisibility={props.setModalVisibility}
         navigate={props.navigation.navigate}
       />
-      <SafeAreaView>
+      <SafeAreaView style={{ flex: 1 }}>
         <Navigation setModalVisibility={props.setModalVisibility} />
+        <HeroSection />
+        <View style={styles.paymentContainer}>
+          <Text style={styles.containerHeading}>Make Payment</Text>
+          <View style={styles.boxContainer}>
+            <Text style={styles.inputBoxTitle}>Customer Name</Text>
+          </View>
+          <View style={styles.boxContainer}>
+            <Text style={styles.inputBoxTitle}>Reservation Number</Text>
+          </View>
+          <View style={styles.boxContainer}>
+            <Text style={styles.inputBoxTitle}>Total Amount</Text>
+          </View>
+          <View style={styles.boxContainer}>
+            <Text style={styles.inputBoxTitle}>Date</Text>
+          </View>
+          <View style={styles.boxContainerAlt}>
+            <Text style={styles.inputBoxTitle}>Payment Type</Text>
+
+            {
+              <View style={styles.radioButtonGroup}>
+                <RadioButton title={"Cash"} />
+                <RadioButton title={"Card"} />
+                <RadioButton title={"Internet Banking"} />
+                <RadioButton title={"UPI"} />
+              </View>
+            }
+          </View>
+          <View></View>
+
+          <View style={styles.controlsContainer}>
+            <Pressable
+              android_ripple={{ color: Colors.rippleDark }}
+              style={styles.buttonContainer}
+              onPress={() => {
+                props.navigation.navigate("CardPayment");
+              }}
+            >
+              <Text style={styles.buttonLabel}>Pay</Text>
+            </Pressable>
+
+            <Pressable
+              android_ripple={{ color: Colors.rippleDark }}
+              style={styles.buttonContainer}
+              onPress={() => {
+                props.navigation.navigate("TableReservation");
+              }}
+            >
+              <Text style={styles.buttonLabel}>Cancel</Text>
+            </Pressable>
+          </View>
+        </View>
       </SafeAreaView>
-      <HeroSection />
-      <View style={styles.paymentContainer}>
-        <Text style={styles.containerHeading}>Make Payment</Text>
-        <View style={styles.boxContainer}>
-          <Text style={styles.inputBoxTitle}>Customer Name</Text>
-        </View>
-        <View style={styles.boxContainer}>
-          <Text style={styles.inputBoxTitle}>Reservation Number</Text>
-        </View>
-        <View style={styles.boxContainer}>
-          <Text style={styles.inputBoxTitle}>Total Amount</Text>
-        </View>
-        <View style={styles.boxContainer}>
-          <Text style={styles.inputBoxTitle}>Date</Text>
-        </View>
-        <View style={styles.boxContainerAlt}>
-          <Text style={styles.inputBoxTitle}>Payment Type</Text>
-
-          {
-            <View style={styles.radioButtonGroup}>
-              <RadioButton title={"Cash"} />
-              <RadioButton title={"Card"} />
-              <RadioButton title={"Internet Banking"} />
-              <RadioButton title={"UPI"} />
-            </View>
-          }
-        </View>
-        <View></View>
-
-        <View style={styles.controlsContainer}>
-          <Pressable
-            android_ripple={{ color: Colors.rippleDark }}
-            style={styles.buttonContainer}
-            onPress={() => {
-              props.navigation.navigate("CardPayment");
-            }}
-          >
-            <Text style={styles.buttonLabel}>Pay</Text>
-          </Pressable>
-
-          <Pressable
-            android_ripple={{ color: Colors.rippleDark }}
-            style={styles.buttonContainer}
-            onPress={() => {
-              props.navigation.navigate("TableReservation");
-            }}
-          >
-            <Text style={styles.buttonLabel}>Cancel</Text>
-          </Pressable>
-        </View>
-      </View>
     </>
   );
 };

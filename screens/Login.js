@@ -14,15 +14,15 @@ const Login = function (props) {
         setModalVisibility={props.setModalVisibility}
         navigate={props.navigation.navigate}
       />
-      <SafeAreaView>
+      <SafeAreaView style={{ flex: 1 }}>
         <Navigation setModalVisibility={props.setModalVisibility} />
+        <HeroSection heroMessageImageVisible />
+        <ScrollView>
+          <KeyboardAvoidingView>
+            <LoginModule navigation={props.navigation} />
+          </KeyboardAvoidingView>
+        </ScrollView>
       </SafeAreaView>
-      <HeroSection heroMessageImageVisible />
-      <ScrollView>
-        <KeyboardAvoidingView>
-          <LoginModule navigation={props.navigation} />
-        </KeyboardAvoidingView>
-      </ScrollView>
     </>
   );
 };

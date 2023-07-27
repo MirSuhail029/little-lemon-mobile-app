@@ -54,128 +54,128 @@ const TableReservation = function (props) {
           }}
         />
       </Modal>
-      <SafeAreaView>
+      <SafeAreaView style={{ flex: 1 }}>
         <Navigation setModalVisibility={props.setModalVisibility} />
-      </SafeAreaView>
-      <HeroSection />
-      <ScrollView>
-        <KeyboardAvoidingView behavior="position">
-          <View style={styles.tableReservation}>
-            <Text style={styles.containerHeading}>Table Reservation</Text>
-            <Pressable
-              onPress={() => {
-                setIsDateModal(!isDateModal);
-              }}
-            >
-              <View style={styles.boxContainer}>
-                <Text style={styles.inputBoxTitle}>Date</Text>
-                {true && (
-                  <Text style={styles.displayedData}>
-                    {/* hello */}
-                    {selectedDate}
-                    {/* {selectedDate.split("-").reverse().join("-")} */}
-                  </Text>
-                )}
-              </View>
-            </Pressable>
-            <Pressable
-              onPress={() => {
-                setIsTimeVisible(!isTimeVisible);
-              }}
-            >
-              <View style={styles.boxContainer}>
-                <Text style={styles.inputBoxTitle}>Time hh/mm</Text>
-                {isTimeVisible && (
-                  <View>
+        <HeroSection />
+        <ScrollView>
+          <KeyboardAvoidingView behavior="position">
+            <View style={styles.tableReservation}>
+              <Text style={styles.containerHeading}>Table Reservation</Text>
+              <Pressable
+                onPress={() => {
+                  setIsDateModal(!isDateModal);
+                }}
+              >
+                <View style={styles.boxContainer}>
+                  <Text style={styles.inputBoxTitle}>Date</Text>
+                  {true && (
                     <Text style={styles.displayedData}>
-                      {selectedTime.getHours()} : {selectedTime.getMinutes()}
-                      {selectedTime.getHours() <= 12 ? " AM" : " PM"}
+                      {/* hello */}
+                      {selectedDate}
+                      {/* {selectedDate.split("-").reverse().join("-")} */}
                     </Text>
-                  </View>
-                )}
-              </View>
-            </Pressable>
-            <Pressable
-              onPress={() => {
-                setIsPersonsVisible(!isPersonsVisible);
-              }}
-            >
-              <View style={styles.boxContainer}>
-                <Text style={styles.inputBoxTitle}>Number of Persons</Text>
-                {isPersonsVisible && (
-                  <Text style={styles.displayedData}>{noOfPersons}</Text>
-                )}
-              </View>
-            </Pressable>
-            <View style={styles.inputBoxContainer}>
-              <Text style={styles.inputBoxTitle}>Customer Name</Text>
-              <TextInput
-                style={styles.inputBox}
-                placeholder="Enter Name"
-                onChangeText={(val) => {
-                  setCustomerName(val);
-                }}
-                value={customerName}
-              />
-            </View>
-            <View style={styles.inputBoxContainer}>
-              <Text style={styles.inputBoxTitle}>Contact Number</Text>
-              <TextInput
-                style={styles.inputBox}
-                placeholder="Enter Phone Number"
-                onChangeText={(val) => {
-                  setCustomerPhone(val);
-                }}
-                value={customerPhone}
-                keyboardType="numeric"
-              />
-            </View>
-            <View style={styles.controlsContainer}>
+                  )}
+                </View>
+              </Pressable>
               <Pressable
-                android_ripple={{ color: Colors.rippleDark }}
-                style={styles.buttonContainer}
                 onPress={() => {
-                  if (
-                    selectedDate &&
-                    selectedTime &&
-                    noOfPersons &&
-                    customerName &&
-                    customerPhone
-                  ) {
-                    setReservationInfo([
-                      selectedDate.split("-").reverse().join("-"),
-                      `${selectedTime.getHours()} ${selectedTime.getMinutes()}`,
-                      noOfPersons,
-                      customerName,
-                      customerPhone,
-                    ]);
-                    props.navigation.navigate("Payment");
-                    // setSelectedDate("");
-                    // setSelectedTime(new Date());
-                    // setNoOfPersons("1");
-                    // setCustomerName("");
-                    // setCustomerPhone("");
-                  } else {
-                    console.log("Please enter all the values");
-                  }
+                  setIsTimeVisible(!isTimeVisible);
                 }}
               >
-                <Text style={styles.buttonLabel}>Submit</Text>
+                <View style={styles.boxContainer}>
+                  <Text style={styles.inputBoxTitle}>Time hh/mm</Text>
+                  {isTimeVisible && (
+                    <View>
+                      <Text style={styles.displayedData}>
+                        {selectedTime.getHours()} : {selectedTime.getMinutes()}
+                        {selectedTime.getHours() <= 12 ? " AM" : " PM"}
+                      </Text>
+                    </View>
+                  )}
+                </View>
               </Pressable>
+              <Pressable
+                onPress={() => {
+                  setIsPersonsVisible(!isPersonsVisible);
+                }}
+              >
+                <View style={styles.boxContainer}>
+                  <Text style={styles.inputBoxTitle}>Number of Persons</Text>
+                  {isPersonsVisible && (
+                    <Text style={styles.displayedData}>{noOfPersons}</Text>
+                  )}
+                </View>
+              </Pressable>
+              <View style={styles.inputBoxContainer}>
+                <Text style={styles.inputBoxTitle}>Customer Name</Text>
+                <TextInput
+                  style={styles.inputBox}
+                  placeholder="Enter Name"
+                  onChangeText={(val) => {
+                    setCustomerName(val);
+                  }}
+                  value={customerName}
+                />
+              </View>
+              <View style={styles.inputBoxContainer}>
+                <Text style={styles.inputBoxTitle}>Contact Number</Text>
+                <TextInput
+                  style={styles.inputBox}
+                  placeholder="Enter Phone Number"
+                  onChangeText={(val) => {
+                    setCustomerPhone(val);
+                  }}
+                  value={customerPhone}
+                  keyboardType="numeric"
+                />
+              </View>
+              <View style={styles.controlsContainer}>
+                <Pressable
+                  android_ripple={{ color: Colors.rippleDark }}
+                  style={styles.buttonContainer}
+                  onPress={() => {
+                    if (
+                      selectedDate &&
+                      selectedTime &&
+                      noOfPersons &&
+                      customerName &&
+                      customerPhone
+                    ) {
+                      setReservationInfo([
+                        selectedDate.split("-").reverse().join("-"),
+                        `${selectedTime.getHours()} ${selectedTime.getMinutes()}`,
+                        noOfPersons,
+                        customerName,
+                        customerPhone,
+                      ]);
+                      props.navigation.navigate("Payment");
+                      // setSelectedDate("");
+                      // setSelectedTime(new Date());
+                      // setNoOfPersons("1");
+                      // setCustomerName("");
+                      // setCustomerPhone("");
+                    } else {
+                      console.log("Please enter all the values");
+                    }
+                  }}
+                >
+                  <Text style={styles.buttonLabel}>Submit</Text>
+                </Pressable>
 
-              <Pressable
-                android_ripple={{ color: Colors.rippleDark }}
-                style={styles.buttonContainer}
-                onPress={() => {
-                  props.navigation.navigate("Home");
-                }}
-              >
-                <Text style={styles.buttonLabel}>Cancel</Text>
-              </Pressable>
+                <Pressable
+                  android_ripple={{ color: Colors.rippleDark }}
+                  style={styles.buttonContainer}
+                  onPress={() => {
+                    props.navigation.navigate("Home");
+                  }}
+                >
+                  <Text style={styles.buttonLabel}>Cancel</Text>
+                </Pressable>
+              </View>
             </View>
-          </View>
-        </KeyboardAvoidingView>
-      </ScrollView>
+          </KeyboardAvoidingView>
+        </ScrollView>
+      </SafeAreaView>
     </>
   );
 };

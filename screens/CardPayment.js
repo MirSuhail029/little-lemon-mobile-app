@@ -12,47 +12,48 @@ const CardPayment = function (props) {
         setModalVisibility={props.setModalVisibility}
         navigate={props.navigation.navigate}
       />
-      <SafeAreaView>
+      <SafeAreaView style={{ flex: 1 }}>
         <Navigation setModalVisibility={props.setModalVisibility} />
-      </SafeAreaView>
-      <HeroSection />
 
-      <View style={styles.paymentContainer}>
-        <Text style={styles.containerHeading}>Card Details</Text>
-        <View style={styles.boxContainer}>
-          <Text style={styles.inputBoxTitle}>Card Number</Text>
+        <HeroSection />
+
+        <View style={styles.paymentContainer}>
+          <Text style={styles.containerHeading}>Card Details</Text>
+          <View style={styles.boxContainer}>
+            <Text style={styles.inputBoxTitle}>Card Number</Text>
+          </View>
+          <View style={styles.boxContainer}>
+            <Text style={styles.inputBoxTitle}>Valid Up-To dd/mm/yy</Text>
+          </View>
+          <View style={styles.boxContainer}>
+            <Text style={styles.inputBoxTitle}>CVV</Text>
+          </View>
+          <View style={styles.boxContainer}>
+            <Text style={styles.inputBoxTitle}>Name of the card holder</Text>
+          </View>
+          <View style={styles.controlsContainer}>
+            <Pressable
+              android_ripple={{ color: Colors.rippleDark }}
+              style={styles.buttonContainer}
+              onPress={() => {
+                // setIsPaymentSuccess(true);
+                props.navigation.navigate("ReservationSuccess");
+              }}
+            >
+              <Text style={styles.buttonLabel}>Pay</Text>
+            </Pressable>
+            <Pressable
+              android_ripple={{ color: Colors.rippleDark }}
+              style={styles.buttonContainer}
+              onPress={() => {
+                props.navigation.navigate("Payment");
+              }}
+            >
+              <Text style={styles.buttonLabel}>Cancel</Text>
+            </Pressable>
+          </View>
         </View>
-        <View style={styles.boxContainer}>
-          <Text style={styles.inputBoxTitle}>Valid Up-To dd/mm/yy</Text>
-        </View>
-        <View style={styles.boxContainer}>
-          <Text style={styles.inputBoxTitle}>CVV</Text>
-        </View>
-        <View style={styles.boxContainer}>
-          <Text style={styles.inputBoxTitle}>Name of the card holder</Text>
-        </View>
-        <View style={styles.controlsContainer}>
-          <Pressable
-            android_ripple={{ color: Colors.rippleDark }}
-            style={styles.buttonContainer}
-            onPress={() => {
-              // setIsPaymentSuccess(true);
-              props.navigation.navigate("ReservationSuccess");
-            }}
-          >
-            <Text style={styles.buttonLabel}>Pay</Text>
-          </Pressable>
-          <Pressable
-            android_ripple={{ color: Colors.rippleDark }}
-            style={styles.buttonContainer}
-            onPress={() => {
-              props.navigation.navigate("Payment");
-            }}
-          >
-            <Text style={styles.buttonLabel}>Cancel</Text>
-          </Pressable>
-        </View>
-      </View>
+      </SafeAreaView>
     </>
   );
 };

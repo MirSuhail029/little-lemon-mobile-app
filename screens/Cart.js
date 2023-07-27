@@ -3,16 +3,15 @@ import {
   ScrollView,
   View,
   Text,
-  SafeAreaView,
   Pressable,
   Image,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import Navigation from "../components/Navigation";
 import BurgerMenuModal from "../components/BurgerMenuModal";
 import { useState } from "react";
 import Colors from "../constants/Colors";
 import deliveryVan from "../assets/van.png";
-import OrderSection from "../components/OrderSection";
 import AllMenu from "../components/AllMenu";
 
 const Cart = function (props) {
@@ -24,7 +23,7 @@ const Cart = function (props) {
         setModalVisibility={props.setModalVisibility}
         navigate={props.navigation.navigate}
       />
-      <SafeAreaView>
+      <SafeAreaView style={{ flex: 1 }}>
         <Navigation setModalVisibility={props.setModalVisibility} />
         <ScrollView style={styles.mainContainer}>
           <View style={styles.deliveryTimeContainer}>
@@ -93,7 +92,19 @@ const Cart = function (props) {
               <Text style={styles.totalPrice}>$15.99</Text>
             </View>
           </View>
-          <View></View>
+          <View style={styles.checkoutButtonContainer}>
+            <View style={styles.checkoutButton}>
+              <Pressable
+                android_ripple={{ color: Colors.ripple }}
+                style={styles.checkoutButtonPressable}
+                onPress={() => {
+                  props.navigation.navigate("Payment");
+                }}
+              >
+                <Text style={styles.checkoutButtonText}>Checkout</Text>
+              </Pressable>
+            </View>
+          </View>
         </ScrollView>
       </SafeAreaView>
     </>
@@ -112,6 +123,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderColor: Colors.lightGray,
     borderBottomWidth: 3,
+    paddingBottom: 10,
   },
   van: {
     marginRight: 10,
@@ -125,7 +137,7 @@ const styles = StyleSheet.create({
   },
   cutleryContainer: {
     // backgroundColor: "green",
-    height: 120,
+    height: 100,
     justifyContent: "center",
     borderColor: Colors.lightGray,
     borderBottomWidth: 3,
@@ -172,22 +184,14 @@ const styles = StyleSheet.create({
     width: 15,
     borderRadius: 20,
   },
-  menu: {
-    paddingBottom: 15,
-    marginBottom: 25,
-    borderColor: Colors.lightGray,
-    borderBottomWidth: 3,
-  },
 
-  orderMenu: {
-    marginTop: 10,
-  },
   orderSummarySection: {
     minHeight: 130,
     justifyContent: "center",
     borderColor: Colors.lightGray,
     borderBottomWidth: 3,
     paddingVertical: 20,
+    // backgroundColor: "red",
   },
   orderSummary: {
     fontSize: 21,
@@ -219,6 +223,16 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: 700,
   },
+  menu: {
+    paddingBottom: 15,
+    marginBottom: 25,
+    borderColor: Colors.lightGray,
+    borderBottomWidth: 3,
+  },
+
+  orderMenu: {
+    marginTop: 10,
+  },
   subTotalprice: {
     justifyContent: "flex-end",
     // backgroundColor: "red",
@@ -233,6 +247,8 @@ const styles = StyleSheet.create({
   totalContainer: {
     // backgroundColor: "blue",
     height: 150,
+    borderBottomWidth: 3,
+    borderColor: Colors.lightGray,
   },
   subTotal: {
     flexDirection: "row",
@@ -260,7 +276,7 @@ const styles = StyleSheet.create({
   deliveryPrice: {
     fontSize: 16,
     // fontWeight: 600,
-    colors: Colors.primaryGray,
+    color: Colors.primaryGray,
   },
   service: {
     flexDirection: "row",
@@ -287,5 +303,26 @@ const styles = StyleSheet.create({
   totalPrice: {
     fontSize: 20,
     fontWeight: 900,
+    color: Colors.primaryGray,
+  },
+  checkoutButtonContainer: {
+    // backgroundColor: "cyan",
+    height: 80,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  checkoutButton: {
+    borderRadius: 15,
+    width: "90%",
+    backgroundColor: Colors.primaryYellow,
+  },
+  checkoutButtonPressable: {
+    height: 45,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  checkoutButtonText: {
+    fontSize: 19,
+    fontWeight: 700,
   },
 });
