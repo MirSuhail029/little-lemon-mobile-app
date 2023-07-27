@@ -14,7 +14,12 @@ import { useState } from "react";
 
 const Dish = function (props) {
   const { dishInfo } = props.route.params;
-  const [image, dishName, description, price, ...rest] = dishInfo;
+  // using var temporarily just for testing purpose
+  if (dishInfo.id) {
+    var { picture: image, name: dishName, description, price } = dishInfo;
+  } else {
+    var [image, dishName, description, price, ...rest] = dishInfo;
+  }
   const [quantity, setQuantity] = useState(1);
   return (
     <>

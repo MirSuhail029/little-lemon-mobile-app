@@ -12,32 +12,52 @@ import friedRice from "../assets/fried-rice.jpg";
 import chickenBiryani from "../assets/chicken-biryani.jpg";
 import shwarma from "../assets/shwarma.jpg";
 
-import { StyleSheet, FlatList, Text, View, Image } from "react-native";
+import {
+  StyleSheet,
+  FlatList,
+  Text,
+  View,
+  Image,
+  Pressable,
+} from "react-native";
+import Colors from "../constants/Colors";
 
-const Item = function ({ dish }) {
+const Item = function ({ dish, navigation }) {
   return (
     <>
-      <View style={StyleSheet.menuItemContainer}>
-        <View>
-          <View>
-            <Text>{dish.name}</Text>
+      <View style={styles.menuItemPressableContainer}>
+        <Pressable
+          android_ripple={{ color: Colors.ripple }}
+          style={styles.menuItemPressable}
+          onPress={() => {
+            navigation.navigate("Dish", { dishInfo: dish });
+          }}
+        >
+          <View style={styles.menuItemContainer}>
+            <View style={styles.nameDescriptionPriceContainer}>
+              <View>
+                <Text style={styles.menuItemName}>{dish.name}</Text>
+              </View>
+              <View>
+                <Text style={styles.menuItemDescription}>
+                  {dish.description}
+                </Text>
+              </View>
+              <View>
+                <Text style={styles.menuItemPrice}>${dish.price}</Text>
+              </View>
+            </View>
+            <View style={styles.pictureContainer}>
+              <Image style={styles.picture} source={dish.picture} />
+            </View>
           </View>
-          <View>
-            <Text>{dish.description}</Text>
-          </View>
-          <View>
-            <Text>{dish.price}</Text>
-          </View>
-        </View>
-        <View style={styles.pictureContainer}>
-          <Image style={styles.picture} source={dish.picture} />
-        </View>
+        </Pressable>
       </View>
     </>
   );
 };
 
-const AllMenu = function () {
+const AllMenu = function (props) {
   const menuArrayData = [
     {
       id: 101,
@@ -176,10 +196,11 @@ const AllMenu = function () {
         horizontal={true}
         data={menuArrayData}
         renderItem={({ item }) => {
-          return <Item dish={item} />;
-          //   return <Text>{item.price}</Text>;
+          return <Item dish={item} navigation={props.navigation} />;
         }}
-        keyExtractor={(item) => item.id}
+        // keyExtractor={(item) => item.id}
+        initialNumToRender={3}
+        showsHorizontalScrollIndicator={false}
       />
     </>
   );
@@ -187,14 +208,50 @@ const AllMenu = function () {
 export default AllMenu;
 
 const styles = StyleSheet.create({
-  menuItemContainer: {
-    width: 100,
-    flexDirection: "row",
-    // backgroundColor: "green",
+  menuItemPressableContainer: {
+    borderRadius: 8,
+    marginRight: 20,
+    overflow: "hidden",
   },
-  pictureContainer: {},
+  menuItemPressable: {
+    backgroundColor: Colors.darkerWhiteShade,
+    paddingHorizontal: 5,
+  },
+  menuItemContainer: {
+    width: 280,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  nameDescriptionPriceContainer: {
+    flex: 5,
+    marginRight: 15,
+  },
+  menuItemName: {
+    fontSize: 16,
+    fontWeight: 700,
+    marginBottom: 5,
+  },
+  menuItemDescription: {
+    color: Colors.primaryGray,
+    fontSize: 15,
+    height: 40,
+  },
+  menuItemPrice: {
+    marginTop: 5,
+    color: Colors.primaryGray,
+    fontSize: 15,
+    fontWeight: 700,
+  },
+  pictureContainer: {
+    flex: 2,
+    width: 80,
+    height: 80,
+    justifyContent: "center",
+    alignItems: "flex-end",
+  },
   picture: {
     width: 80,
     height: 80,
+    borderRadius: 8,
   },
 });

@@ -72,10 +72,27 @@ const Cart = function (props) {
               <Text style={styles.addMore}>Add More To Your Order!</Text>
             </View>
             <ScrollView>
-              <AllMenu />
+              <AllMenu navigation={props.navigation} />
             </ScrollView>
           </View>
-          <View></View>
+          <View style={styles.totalContainer}>
+            <View style={styles.subTotal}>
+              <Text style={styles.subTotalText}>Subtotal</Text>
+              <Text style={styles.subTotalPrice}>$12.99</Text>
+            </View>
+            <View style={styles.delivery}>
+              <Text style={styles.deliveryText}>Delivery</Text>
+              <Text style={styles.deliveryPrice}>$2.00</Text>
+            </View>
+            <View style={styles.service}>
+              <Text style={styles.serviceText}>Service</Text>
+              <Text style={styles.servicePrice}>$1.00</Text>
+            </View>
+            <View style={styles.total}>
+              <Text style={styles.totalText}>Total</Text>
+              <Text style={styles.totalPrice}>$15.99</Text>
+            </View>
+          </View>
           <View></View>
         </ScrollView>
       </SafeAreaView>
@@ -123,12 +140,12 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
   },
   label: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 500,
   },
   description: {
     flex: 7,
-    fontSize: 17,
+    fontSize: 16,
     color: Colors.primaryGray,
     // backgroundColor: "pink",
   },
@@ -155,11 +172,17 @@ const styles = StyleSheet.create({
     width: 15,
     borderRadius: 20,
   },
+  menu: {
+    paddingBottom: 15,
+    marginBottom: 25,
+    borderColor: Colors.lightGray,
+    borderBottomWidth: 3,
+  },
+
   orderMenu: {
     marginTop: 10,
   },
   orderSummarySection: {
-    // backgroundColor: "red",
     minHeight: 130,
     justifyContent: "center",
     borderColor: Colors.lightGray,
@@ -167,7 +190,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   orderSummary: {
-    fontSize: 23,
+    fontSize: 21,
     fontWeight: 500,
     marginBottom: 10,
   },
@@ -184,8 +207,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   itemQuantity: {
-    fontSize: 18,
-    fontWeight: 500,
+    fontSize: 17,
+    fontWeight: 700,
     flex: 5,
   },
   itemPriceContainer: {
@@ -193,15 +216,76 @@ const styles = StyleSheet.create({
     flex: 5,
   },
   itemPrice: {
-    fontSize: 18,
-    fontWeight: 500,
+    fontSize: 17,
+    fontWeight: 700,
+  },
+  subTotalprice: {
+    justifyContent: "flex-end",
+    // backgroundColor: "red",
   },
   addMoreTitleContainer: {
     paddingVertical: 20,
-    // backgroundColor: "green",
   },
   addMore: {
-    fontSize: 19,
-    fontWeight: 800,
+    fontSize: 17,
+    fontWeight: 900,
+  },
+  totalContainer: {
+    // backgroundColor: "blue",
+    height: 150,
+  },
+  subTotal: {
+    flexDirection: "row",
+    flex: 1,
+    justifyContent: "space-between",
+  },
+  subTotalText: {
+    fontSize: 16,
+    fontWeight: 600,
+  },
+  subTotalPrice: {
+    fontSize: 16,
+    fontWeight: 600,
+    color: Colors.primaryGray,
+  },
+  delivery: {
+    flexDirection: "row",
+    flex: 1,
+    justifyContent: "space-between",
+  },
+  deliveryText: {
+    fontSize: 16,
+    // fontWeight: 600,
+  },
+  deliveryPrice: {
+    fontSize: 16,
+    // fontWeight: 600,
+    colors: Colors.primaryGray,
+  },
+  service: {
+    flexDirection: "row",
+    flex: 1,
+    justifyContent: "space-between",
+  },
+  serviceText: {
+    fontSize: 16,
+  },
+
+  servicePrice: {
+    fontSize: 16,
+    color: Colors.primaryGray,
+  },
+  total: {
+    flexDirection: "row",
+    flex: 1,
+    justifyContent: "space-between",
+  },
+  totalText: {
+    fontSize: 16,
+    fontWeight: 900,
+  },
+  totalPrice: {
+    fontSize: 20,
+    fontWeight: 900,
   },
 });
