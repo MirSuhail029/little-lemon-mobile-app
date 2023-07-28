@@ -6,6 +6,10 @@ import Colors from "../constants/Colors";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const ReservationSuccess = function (props) {
+  const navigationScreen = props.route.params.screen === "Cart";
+  const status = navigationScreen
+    ? "Yipeee Order Placed!!!"
+    : "Reservation Successful !!!";
   return (
     <>
       <BurgerMenuModal
@@ -17,7 +21,7 @@ const ReservationSuccess = function (props) {
         <Navigation setModalVisibility={props.setModalVisibility} />
         <HeroSection heroMessageImageVisible={true} />
         <View style={styles.reservationSuccessContainer}>
-          <Text style={styles.successMessage}>Reservation Successful !!!</Text>
+          <Text style={styles.successMessage}>{status}</Text>
           <View style={styles.controlsContainer}>
             <Pressable
               android_ripple={{ color: Colors.rippleDark }}

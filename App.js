@@ -23,7 +23,7 @@ export default function App() {
       <StatusBar style="dark" />
       <NavigationContainer>
         <stack.Navigator
-          initialRouteName="Home"
+          initialRouteName="Cart"
           screenOptions={{ headerStyle: { backgroundColor: "green" } }}
         >
           <stack.Screen name="Home" options={{ headerShown: false }}>

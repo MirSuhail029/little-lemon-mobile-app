@@ -28,6 +28,7 @@ const RadioButton = function (props) {
 };
 
 const Payment = function (props) {
+  const navigationScreen = props.route.params.screen == "Cart";
   return (
     <>
       <BurgerMenuModal
@@ -40,12 +41,16 @@ const Payment = function (props) {
         <HeroSection />
         <View style={styles.paymentContainer}>
           <Text style={styles.containerHeading}>Make Payment</Text>
-          <View style={styles.boxContainer}>
-            <Text style={styles.inputBoxTitle}>Customer Name</Text>
-          </View>
-          <View style={styles.boxContainer}>
-            <Text style={styles.inputBoxTitle}>Reservation Number</Text>
-          </View>
+          {!navigationScreen && (
+            <View style={styles.boxContainer}>
+              <Text style={styles.inputBoxTitle}>Customer Name</Text>
+            </View>
+          )}
+          {!navigationScreen && (
+            <View style={styles.boxContainer}>
+              <Text style={styles.inputBoxTitle}>Reservation Number</Text>
+            </View>
+          )}
           <View style={styles.boxContainer}>
             <Text style={styles.inputBoxTitle}>Total Amount</Text>
           </View>
@@ -71,7 +76,13 @@ const Payment = function (props) {
               android_ripple={{ color: Colors.rippleDark }}
               style={styles.buttonContainer}
               onPress={() => {
-                props.navigation.navigate("CardPayment");
+                !navigationScreen
+                  ? props.navigation.navigate("CardPayment", {
+                      screen: "TableReservation",
+                    })
+                  : props.navigation.navigate("CardPayment", {
+                      screen: "Cart",
+                    });
               }}
             >
               <Text style={styles.buttonLabel}>Pay</Text>
@@ -81,7 +92,9 @@ const Payment = function (props) {
               android_ripple={{ color: Colors.rippleDark }}
               style={styles.buttonContainer}
               onPress={() => {
-                props.navigation.navigate("TableReservation");
+                !navigationScreen
+                  ? props.navigation.navigate("TableReservation")
+                  : props.navigation.navigate("Cart");
               }}
             >
               <Text style={styles.buttonLabel}>Cancel</Text>

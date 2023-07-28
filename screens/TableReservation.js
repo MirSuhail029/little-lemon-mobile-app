@@ -27,7 +27,7 @@ const TableReservation = function (props) {
   const [customerName, setCustomerName] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
   const [reservationInfo, setReservationInfo] = useState([]);
-  // console.log(selectedDate, selectedTime);
+
   return (
     <>
       <BurgerMenuModal
@@ -148,7 +148,9 @@ const TableReservation = function (props) {
                         customerName,
                         customerPhone,
                       ]);
-                      props.navigation.navigate("Payment");
+                      props.navigation.navigate("Payment", {
+                        screen: "TableReservation",
+                      });
                       // setSelectedDate("");
                       // setSelectedTime(new Date());
                       // setNoOfPersons("1");

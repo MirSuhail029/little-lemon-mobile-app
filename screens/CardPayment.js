@@ -5,6 +5,7 @@ import Navigation from "../components/Navigation";
 import HeroSection from "../components/HeroSection";
 import { SafeAreaView } from "react-native-safe-area-context";
 const CardPayment = function (props) {
+  const navigationScreen = props.route.params.screen == "Cart";
   return (
     <>
       <BurgerMenuModal
@@ -37,7 +38,14 @@ const CardPayment = function (props) {
               style={styles.buttonContainer}
               onPress={() => {
                 // setIsPaymentSuccess(true);
-                props.navigation.navigate("ReservationSuccess");
+                // props.navigation.navigate("ReservationSuccess");
+                !navigationScreen
+                  ? props.navigation.navigate("ReservationSuccess", {
+                      screen: "TableReservation",
+                    })
+                  : props.navigation.navigate("ReservationSuccess", {
+                      screen: "Cart",
+                    });
               }}
             >
               <Text style={styles.buttonLabel}>Pay</Text>
@@ -46,7 +54,13 @@ const CardPayment = function (props) {
               android_ripple={{ color: Colors.rippleDark }}
               style={styles.buttonContainer}
               onPress={() => {
-                props.navigation.navigate("Payment");
+                !navigationScreen
+                  ? props.navigation.navigate("Payment", {
+                      screen: "TableReservation",
+                    })
+                  : props.navigation.navigate("Payment", {
+                      screen: "Cart",
+                    });
               }}
             >
               <Text style={styles.buttonLabel}>Cancel</Text>

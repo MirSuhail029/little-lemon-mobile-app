@@ -25,7 +25,10 @@ const Cart = function (props) {
       />
       <SafeAreaView style={{ flex: 1 }}>
         <Navigation setModalVisibility={props.setModalVisibility} />
-        <ScrollView style={styles.mainContainer}>
+        <ScrollView
+          style={styles.mainContainer}
+          showsVerticalScrollIndicator={false}
+        >
           <View style={styles.deliveryTimeContainer}>
             <Image source={deliveryVan} style={styles.van} />
             <Text style={styles.deliveryTime}>Delivery time: </Text>
@@ -98,7 +101,7 @@ const Cart = function (props) {
                 android_ripple={{ color: Colors.ripple }}
                 style={styles.checkoutButtonPressable}
                 onPress={() => {
-                  props.navigation.navigate("Payment");
+                  props.navigation.navigate("Payment", { screen: "Cart" });
                 }}
               >
                 <Text style={styles.checkoutButtonText}>Checkout</Text>
@@ -190,7 +193,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderColor: Colors.lightGray,
     borderBottomWidth: 3,
-    paddingVertical: 20,
+    paddingVertical: 10,
     // backgroundColor: "red",
   },
   orderSummary: {
@@ -223,15 +226,14 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: 700,
   },
+  orderMenu: {
+    marginTop: 10,
+  },
   menu: {
     paddingBottom: 15,
     marginBottom: 25,
     borderColor: Colors.lightGray,
     borderBottomWidth: 3,
-  },
-
-  orderMenu: {
-    marginTop: 10,
   },
   subTotalprice: {
     justifyContent: "flex-end",
@@ -246,9 +248,10 @@ const styles = StyleSheet.create({
   },
   totalContainer: {
     // backgroundColor: "blue",
-    height: 150,
+    minHeight: 130,
     borderBottomWidth: 3,
     borderColor: Colors.lightGray,
+    // backgroundColor: "red",
   },
   subTotal: {
     flexDirection: "row",
